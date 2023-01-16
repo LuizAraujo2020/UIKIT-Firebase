@@ -70,6 +70,12 @@ class GroceryListTableViewController: UITableViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(true)
+    
+    /// The event type specifies what event you want to listen for. The code listens for a .value event type, which reports all types of changes to the data in your Firebase database: added, removed and changed (CRUD).
+    /// When the change occurs, the database updates the app with the most recent data.
+    ref.observe(.value, with: { snapshot in
+      print(snapshot.value as Any)
+    })
   }
 
   override func viewDidDisappear(_ animated: Bool) {
