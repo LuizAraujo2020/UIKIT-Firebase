@@ -41,6 +41,12 @@ class GroceryListTableViewController: UITableViewController {
   var items: [GroceryItem] = []
   var user: User?
   var onlineUserCount = UIBarButtonItem()
+  
+  /// Establish a connection to your Firebase database at a given path.
+  /// In short, these properties let you save and sync data to the given location.
+  let ref = Database.database().reference(withPath: "grocery-items")
+  /// Keep track of the references you add, so you can clean them up later.
+  var refObservers: [DatabaseHandle] = []
 
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
