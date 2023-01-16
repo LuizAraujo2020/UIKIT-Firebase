@@ -134,20 +134,26 @@ class GroceryListTableViewController: UITableViewController {
       preferredStyle: .alert)
 
     let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+      // Get the text field and its text from the alert controller.
       guard
         let textField = alert.textFields?.first,
         let text = textField.text,
         let user = self.user
       else { return }
-
+      
+      // Using the current user’s data, you create a new GroceryItem.
       let groceryItem = GroceryItem(
         name: text,
         addedByUser: user.email,
         completed: false)
 
-      self.items.append(groceryItem)
-      self.tableView.reloadData()
+      // Create a child reference.
+      let groceryItemRef = self.ref.child(text.lowercased())
+
+      // Use setValue(_:) to save data to the database. This method expects a Dictionary. GroceryItem has a helper method called toAnyObject() to turn it into a Dictionary.
+      groceryItemRef.setValue(groceryItem.toAnyObject())
     }
+
 
     let cancelAction = UIAlertAction(
       title: "Cancel",
