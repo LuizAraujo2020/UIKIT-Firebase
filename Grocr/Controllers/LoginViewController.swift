@@ -73,6 +73,25 @@ class LoginViewController: UIViewController {
 
   @IBAction func signUpDidTouch(_ sender: AnyObject) {
     performSegue(withIdentifier: loginToList, sender: nil)
+    
+    // Get the email and password as supplied by the user from the alert controller.
+    guard
+      let email = enterEmail.text,
+      let password = enterPassword.text,
+      !email.isEmpty,
+      !password.isEmpty
+    else { return }
+
+    // Call createUser(withEmail:password:completion:) on the Firebase auth object passing the email, password and completion block.
+    Auth.auth().createUser(withEmail: email, password: password) { _, error in
+      // If there are no errors, Firebase created the user account. However, you still need to authenticate this new user, so you call signIn(withEmail:password:), again passing in the supplied email and password.
+      if error == nil {
+        Auth.auth().signIn(withEmail: email, password: password)
+      } else {
+        print("Error in createUser: \(error?.localizedDescription ?? "")")
+      }
+    }
+
   }
 }
 
