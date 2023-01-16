@@ -73,13 +73,33 @@ class GroceryListTableViewController: UITableViewController {
     
     /// The event type specifies what event you want to listen for. The code listens for a .value event type, which reports all types of changes to the data in your Firebase database: added, removed and changed (CRUD).
     /// When the change occurs, the database updates the app with the most recent data.
-    ref.observe(.value, with: { snapshot in
-      print(snapshot.value as Any)
-    })
+    // You attach a listener to receive updates whenever the grocery-items endpoint changes. The database triggers the listener block once for the initial data and again whenever the data changes.
+    let completed = ref.observe(.value) { snapshot in
+      // Then, you store the latest version of the data in a local variable inside the listener’s closure.
+      var newItems: [GroceryItem] = []
+      // The listener’s closure returns a snapshot of the latest set of data. The snapshot contains the entire list of grocery items, not just the updates. Using children, you loop through the grocery items.
+      for child in snapshot.children {
+        // GroceryItem has an initializer that populates its properties using a DataSnapshot. A snapshot’s value is of type AnyObject and can be a dictionary, array, number or string. After creating an instance of GroceryItem, you add it to the array that contains the latest version of the data.
+        if
+          let snapshot = child as? DataSnapshot,
+          let groceryItem = GroceryItem(snapshot: snapshot) {
+          newItems.append(groceryItem)
+        }
+      }
+      // You replace items with the latest version of the data, then reload the table view so it displays the latest version.
+      self.items = newItems
+      self.tableView.reloadData()
+    }
+    // Store a reference to the listener block so you can remove it later.
+    refObservers.append(completed)
+
   }
 
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(true)
+    ///Here, you iterate over all the observers you’ve previously added and remove them from ref.
+    refObservers.forEach(ref.removeObserver(withHandle:))
+    refObservers = []
   }
 
   // MARK: UITableView Delegate methods
