@@ -74,7 +74,9 @@ class GroceryListTableViewController: UITableViewController {
     /// The event type specifies what event you want to listen for. The code listens for a .value event type, which reports all types of changes to the data in your Firebase database: added, removed and changed (CRUD).
     /// When the change occurs, the database updates the app with the most recent data.
     // You attach a listener to receive updates whenever the grocery-items endpoint changes. The database triggers the listener block once for the initial data and again whenever the data changes.
-    let completed = ref.observe(.value) { snapshot in
+    let completed = ref
+      .queryOrdered(byChild: "completed")
+      .observe(.value) { snapshot in
       // Then, you store the latest version of the data in a local variable inside the listener’s closure.
       var newItems: [GroceryItem] = []
       // The listener’s closure returns a snapshot of the latest set of data. The snapshot contains the entire list of grocery items, not just the updates. Using children, you loop through the grocery items.
