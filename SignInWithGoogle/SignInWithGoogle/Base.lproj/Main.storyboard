@@ -106,15 +106,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="signInDesign" translatesAutoresizingMaskIntoConstraints="NO" id="ekH-zr-0hH">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signInDesign" translatesAutoresizingMaskIntoConstraints="NO" id="ekH-zr-0hH">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="500"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="500" id="vBb-kM-Rdr"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome !" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tX-gT-kaH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome !" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tX-gT-kaH">
                                 <rect key="frame" x="42" y="88" width="277" height="40.666666666666686"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -183,7 +182,13 @@
                         <viewLayoutGuide key="safeArea" id="BjZ-BK-fDl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="8tX-gT-kaH" firstAttribute="leading" secondItem="BjZ-BK-fDl" secondAttribute="leading" constant="42" id="HTv-u3-AOe"/>
+                            <constraint firstItem="ekH-zr-0hH" firstAttribute="leading" secondItem="BjZ-BK-fDl" secondAttribute="leading" id="LSH-lh-ZUF"/>
+                            <constraint firstItem="BjZ-BK-fDl" firstAttribute="trailing" secondItem="8tX-gT-kaH" secondAttribute="trailing" constant="74" id="M97-60-AeZ"/>
+                            <constraint firstItem="8tX-gT-kaH" firstAttribute="top" secondItem="BjZ-BK-fDl" secondAttribute="top" constant="29" id="N30-qG-FCg"/>
                             <constraint firstItem="BjZ-BK-fDl" firstAttribute="bottom" secondItem="kGy-n9-vwg" secondAttribute="bottom" constant="50" id="OGY-a9-dxt"/>
+                            <constraint firstItem="ekH-zr-0hH" firstAttribute="centerX" secondItem="kGy-n9-vwg" secondAttribute="centerX" id="YQH-zw-5Mg"/>
+                            <constraint firstItem="BjZ-BK-fDl" firstAttribute="bottom" secondItem="ekH-zr-0hH" secondAttribute="bottom" constant="318" id="chA-aJ-zIx"/>
                             <constraint firstItem="BjZ-BK-fDl" firstAttribute="trailing" secondItem="kGy-n9-vwg" secondAttribute="trailing" constant="30" id="vuH-oo-NnS"/>
                             <constraint firstItem="kGy-n9-vwg" firstAttribute="leading" secondItem="BjZ-BK-fDl" secondAttribute="leading" constant="30" id="xL3-j6-cMy"/>
                         </constraints>
