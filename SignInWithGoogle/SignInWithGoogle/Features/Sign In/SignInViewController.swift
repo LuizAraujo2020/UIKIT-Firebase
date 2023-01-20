@@ -23,6 +23,14 @@ class SignInViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func signInTouched(_ sender: Any) {
+        
+    }
+    
+    @IBAction func signUpTouched(_ sender: Any) {
+        
+    }
+    
 
     /*
     // MARK: - Navigation

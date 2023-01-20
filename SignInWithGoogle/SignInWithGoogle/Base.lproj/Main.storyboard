@@ -54,6 +54,9 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Sign In" cornerStyle="capsule" titleAlignment="center">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="signInTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v9j-Ra-UJS"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13p-fm-hn1">
                                         <rect key="frame" x="0.0" y="239.99999999999994" width="333" height="18"/>
@@ -68,6 +71,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Don't have an account? Sign Up">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleHeadline"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="signUpTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bZG-qX-onq"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
