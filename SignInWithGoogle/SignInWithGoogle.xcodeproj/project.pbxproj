@@ -16,6 +16,7 @@
 		6FDBEC6D297B2C4200CB6F40 /* SignInWithGoogleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDBEC6C297B2C4200CB6F40 /* SignInWithGoogleTests.swift */; };
 		6FDBEC77297B2C4200CB6F40 /* SignInWithGoogleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDBEC76297B2C4200CB6F40 /* SignInWithGoogleUITests.swift */; };
 		6FDBEC79297B2C4200CB6F40 /* SignInWithGoogleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDBEC78297B2C4200CB6F40 /* SignInWithGoogleUITestsLaunchTests.swift */; };
+		6FDBECC2297B2F9C00CB6F40 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6FDBECC1297B2F9C00CB6F40 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		6FDBEC72297B2C4200CB6F40 /* SignInWithGoogleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignInWithGoogleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FDBEC76297B2C4200CB6F40 /* SignInWithGoogleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleUITests.swift; sourceTree = "<group>"; };
 		6FDBEC78297B2C4200CB6F40 /* SignInWithGoogleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6FDBECC1297B2F9C00CB6F40 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		6FDBEC49297B2C4100CB6F40 = {
 			isa = PBXGroup;
 			children = (
+				6FDBECC1297B2F9C00CB6F40 /* README.md */,
 				6FDBEC54297B2C4100CB6F40 /* SignInWithGoogle */,
 				6FDBEC6B297B2C4200CB6F40 /* SignInWithGoogleTests */,
 				6FDBEC75297B2C4200CB6F40 /* SignInWithGoogleUITests */,
@@ -233,6 +236,7 @@
 			files = (
 				6FDBEC62297B2C4200CB6F40 /* LaunchScreen.storyboard in Resources */,
 				6FDBEC5F297B2C4200CB6F40 /* Assets.xcassets in Resources */,
+				6FDBECC2297B2F9C00CB6F40 /* README.md in Resources */,
 				6FDBEC5D297B2C4100CB6F40 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
