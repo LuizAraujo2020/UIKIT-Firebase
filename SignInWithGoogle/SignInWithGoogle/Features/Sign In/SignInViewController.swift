@@ -8,7 +8,15 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-
+    
+    // MARK: Outlets
+    @IBOutlet weak var labelUsername: UITextField!
+    @IBOutlet weak var labelPassword: UITextField!
+    @IBOutlet weak var buttonSignIn: UIButton!
+    @IBOutlet weak var buttonSignUp: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

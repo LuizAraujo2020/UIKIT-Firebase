@@ -12,7 +12,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="Sign In View Controller" customClass="ViewController" customModule="SignInWithGoogle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Sign In View Controller" customClass="SignInViewController" customModule="SignInWithGoogle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,6 +93,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eBB-mb-oSf"/>
+                    <connections>
+                        <outlet property="buttonSignIn" destination="VLF-gg-BdM" id="Kif-gh-mzx"/>
+                        <outlet property="buttonSignUp" destination="6RN-FS-Wpd" id="pie-Sd-TMv"/>
+                        <outlet property="labelPassword" destination="lwL-M9-Vfx" id="4Cd-cF-O9h"/>
+                        <outlet property="labelUsername" destination="yuu-OM-xoU" id="OoW-H9-0nr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,7 +107,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="EKI-Ia-7Ch">
             <objects>
-                <viewController id="Gsu-1r-cah" userLabel="Sign Up View Controller" sceneMemberID="viewController">
+                <viewController id="Gsu-1r-cah" userLabel="Sign Up View Controller" customClass="SignUpViewController" customModule="SignInWithGoogle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tKJ-gY-5hI">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
