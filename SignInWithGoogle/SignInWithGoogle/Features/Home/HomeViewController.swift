@@ -11,21 +11,28 @@ import GoogleSignIn
 
 class HomeViewController: UIViewController {
 
-    @IBOutlet weak var buttonSignOut: UIBarButtonItem!
+    
+    @IBOutlet weak var buttonSignOut: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    @IBAction func signOutTouched(_ sender: UIBarButtonItem) {
-        
+    @IBAction func signOutTouched(_ sender: UIButton) {
+        print("☝🏾SIGN OUT TOUCHED")
+        print("☝🏾SIGN OUT TOUCHED")
+        print("☝🏾SIGN OUT TOUCHED")
         GIDSignIn.sharedInstance.signOut()
         do {
             try Auth.auth().signOut()
+            
+            /// Send back to Sign In screen
+            navigationController?.popToRootViewController(animated: true)
         } catch {
             //TODO: ☑️ Tratar erro
+            return
         }
     }
     /*

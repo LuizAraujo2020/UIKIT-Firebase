@@ -135,24 +135,34 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFx-O3-pVl">
+                                <rect key="frame" x="0.0" y="103" width="393" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="E7v-H0-3Yb"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign Out"/>
+                                <connections>
+                                    <action selector="signOutTouched:" destination="PXE-M1-46l" eventType="touchUpInside" id="oO6-J4-C1g"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iSH-aS-yRV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="JFx-O3-pVl" firstAttribute="leading" secondItem="iSH-aS-yRV" secondAttribute="leading" id="51f-CF-CUq"/>
                             <constraint firstItem="iSH-aS-yRV" firstAttribute="trailing" secondItem="s6J-ki-AqZ" secondAttribute="trailing" id="5Xp-EK-UKC"/>
+                            <constraint firstItem="JFx-O3-pVl" firstAttribute="top" secondItem="iSH-aS-yRV" secondAttribute="top" id="Dvr-Li-2zh"/>
+                            <constraint firstItem="iSH-aS-yRV" firstAttribute="trailing" secondItem="JFx-O3-pVl" secondAttribute="trailing" id="EIQ-HP-gc6"/>
                             <constraint firstItem="s6J-ki-AqZ" firstAttribute="top" secondItem="iSH-aS-yRV" secondAttribute="top" constant="357" id="ndz-oG-FC8"/>
                             <constraint firstItem="s6J-ki-AqZ" firstAttribute="leading" secondItem="iSH-aS-yRV" secondAttribute="leading" id="rNZ-aX-VUe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="9af-JU-Hb5">
-                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="ij8-LE-A4P">
-                            <connections>
-                                <action selector="signOutTouched:" destination="PXE-M1-46l" id="uvD-M2-n4p"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="9af-JU-Hb5"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="buttonSignOut" destination="ij8-LE-A4P" id="NLV-sT-46V"/>
+                        <outlet property="buttonSignOut" destination="JFx-O3-pVl" id="cB2-dQ-8hU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RMi-lD-uj1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

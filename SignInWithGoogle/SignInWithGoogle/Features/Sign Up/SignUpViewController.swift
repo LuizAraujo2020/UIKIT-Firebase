@@ -26,7 +26,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         navigationController?.setNavigationBarHidden(true, animated: true)
-        
     }
     
     
