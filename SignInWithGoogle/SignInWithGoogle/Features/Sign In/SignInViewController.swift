@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class SignInViewController: UIViewController, UITextFieldDelegate {
+class SignInViewController: UIViewController {
     
     // MARK: Constants
     let signInToSignUp = "signInToSignUp"
@@ -23,6 +23,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var buttonSignInGoogle: GIDSignInButton!
     
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,10 +34,23 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         initialSetup()
     }
     
-    
-    // MARK: - Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        checkSignedIn()
+    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    
+    //
+    private func checkSignedIn() {
+        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+            if error == nil && user != nil {
+                /// If is already signed in, sends the app's main content View.
+                  self.performSegue(withIdentifier: self.signInToHome, sender: self)
+            }
+        }
     }
     
     // MARK: - Actions
@@ -78,7 +94,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
 }
 
-extension SignInViewController {
+// MARK: - Setups & UITextFieldDelegate
+extension SignInViewController: UITextFieldDelegate {
     private func initialSetup() {
         
         /// Textfields delegates
@@ -95,6 +112,19 @@ extension SignInViewController {
         //TODO: ☑️ Make the Error types
         guard textfieldUsername != nil, !textfieldUsername.text!.isEmpty else { return false }
         guard textfieldPassword != nil, !textfieldPassword.text!.isEmpty else { return false }
+        
+        return true
+    }
+
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == textfieldUsername {
+            textfieldUsername.becomeFirstResponder()
+        }
+        
+        if textField == textfieldPassword {
+            textfieldPassword.resignFirstResponder()
+        }
         
         return true
     }
