@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Firebase
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Constants
     let signInToSignUp = "signInToSignUp"
+    let signInToHome   = "signInToHome"
     
     // MARK: Outlets
     @IBOutlet weak var textfieldUsername: UITextField!
@@ -36,14 +38,24 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Actions
     @IBAction func signInTouched(_ sender: UIButton) {
+        if !isFormValid() { return }
+        //TODO: ☑️ FAZER DEPOIS alertas
         
+        Auth.auth().signIn(withEmail: textfieldUsername.text!, password: textfieldPassword.text!) { firebaseResult, error in
+            
+            if let error {
+                print("🐞 Error: \(error.localizedDescription)")
+            } else {
+                self.performSegue(withIdentifier: self.signInToHome, sender: self)
+            }
+        }
     }
     
     
     @IBAction func signUpTouched(_ sender: UIButton) {
         
 
-        performSegue(withIdentifier: signInToSignUp, sender: nil)
+        performSegue(withIdentifier: signInToSignUp, sender: self)
     }
     
 
@@ -57,4 +69,22 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
     */
 
+}
+
+extension SignInViewController {
+    private func initialSetup() {
+        
+        /// Textfields delegates
+        textfieldUsername.delegate = self
+        textfieldPassword.delegate = self
+    }
+    
+    private func isFormValid() -> Bool {
+        //TODO: ☑️ More validations
+        //TODO: ☑️ Make the Error types
+        guard textfieldUsername != nil, !textfieldUsername.text!.isEmpty else { return false }
+        guard textfieldPassword != nil, !textfieldPassword.text!.isEmpty else { return false }
+        
+        return true
+    }
 }

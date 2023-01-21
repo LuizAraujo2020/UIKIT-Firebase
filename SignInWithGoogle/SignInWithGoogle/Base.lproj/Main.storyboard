@@ -105,11 +105,42 @@
                         <outlet property="textfieldPassword" destination="lwL-M9-Vfx" id="4Cd-cF-O9h"/>
                         <outlet property="textfieldUsername" destination="yuu-OM-xoU" id="OoW-H9-0nr"/>
                         <segue destination="Gsu-1r-cah" kind="show" identifier="signInToSignUp" id="sgg-uy-q4d"/>
+                        <segue destination="PXE-M1-46l" kind="show" identifier="signInToHome" id="5vU-ln-qre"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="947.32824427480909" y="-27.464788732394368"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QaT-wX-Tzc">
+            <objects>
+                <viewController id="PXE-M1-46l" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="C40-SD-P4I">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6J-ki-AqZ">
+                                <rect key="frame" x="0.0" y="460" width="393" height="40.666666666666686"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="iSH-aS-yRV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iSH-aS-yRV" firstAttribute="bottom" secondItem="s6J-ki-AqZ" secondAttribute="bottom" constant="361" id="0HI-fi-1SQ"/>
+                            <constraint firstItem="iSH-aS-yRV" firstAttribute="trailing" secondItem="s6J-ki-AqZ" secondAttribute="trailing" id="5Xp-EK-UKC"/>
+                            <constraint firstItem="s6J-ki-AqZ" firstAttribute="top" secondItem="iSH-aS-yRV" secondAttribute="top" constant="357" id="ndz-oG-FC8"/>
+                            <constraint firstItem="s6J-ki-AqZ" firstAttribute="leading" secondItem="iSH-aS-yRV" secondAttribute="leading" id="rNZ-aX-VUe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9af-JU-Hb5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RMi-lD-uj1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1816" y="322"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="EKI-Ia-7Ch">
@@ -220,11 +251,12 @@
                         <outlet property="textfieldName" destination="Cr9-fh-k6X" id="pC2-oe-hgs"/>
                         <outlet property="textfieldPassword" destination="zdQ-pG-zjF" id="mdM-lS-FJg"/>
                         <outlet property="textfieldUsername" destination="TYe-nK-UTT" id="OJc-HP-MLV"/>
+                        <segue destination="PXE-M1-46l" kind="show" identifier="signUpToHome" id="Tpb-dH-oBj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knV-wL-4xS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1881.679389312977" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="947" y="720"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="axg-sS-beU">
@@ -245,10 +277,13 @@
             <point key="canvasLocation" x="20.610687022900763" y="-27.464788732394368"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="5vU-ln-qre"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="signInDesign" width="500" height="314"/>
         <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
