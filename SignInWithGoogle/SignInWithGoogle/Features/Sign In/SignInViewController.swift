@@ -7,14 +7,14 @@
 
 import UIKit
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Constants
     let signInToSignUp = "signInToSignUp"
     
     // MARK: Outlets
-    @IBOutlet weak var labelUsername: UITextField!
-    @IBOutlet weak var labelPassword: UITextField!
+    @IBOutlet weak var textfieldUsername: UITextField!
+    @IBOutlet weak var textfieldPassword: UITextField!
     @IBOutlet weak var buttonSignIn: UIButton!
     @IBOutlet weak var buttonSignUp: UIButton!
     
@@ -23,18 +23,24 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
 
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        textfieldUsername.delegate = self
+        textfieldPassword.delegate = self
     }
     
+    
+    // MARK: - Life Cycle
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    @IBAction func signInTouched(_ sender: Any) {
+    // MARK: - Actions
+    @IBAction func signInTouched(_ sender: UIButton) {
         
     }
     
-    @IBAction func signUpTouched(_ sender: Any) {
+    
+    @IBAction func signUpTouched(_ sender: UIButton) {
         
 
         performSegue(withIdentifier: signInToSignUp, sender: nil)

@@ -7,29 +7,38 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Outlets
-    @IBOutlet weak var labelName: UITextField!
-    @IBOutlet weak var labelUsername: UITextField!
-    @IBOutlet weak var labelPassword: UITextField!
-    @IBOutlet weak var labelConfirmPassword: UITextField!
+    @IBOutlet weak var textfieldName: UITextField!
+    @IBOutlet weak var textfieldUsername: UITextField!
+    @IBOutlet weak var textfieldPassword: UITextField!
+    @IBOutlet weak var textfieldConfirmPassword: UITextField!
     @IBOutlet weak var buttonSignUp: UIButton!
     @IBOutlet weak var buttonSignIn: UIButton!
     
     
-    
+    // MARK: 🔄 Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    @IBAction func signUpTouched(_ sender: Any) {
+        
+        /// Textfields delegates
+        textfieldName.delegate            = self
+        textfieldUsername.delegate        = self
+        textfieldPassword.delegate        = self
+        textfieldConfirmPassword.delegate = self
         
     }
     
-    @IBAction func signInTouched(_ sender: Any) {
+    
+    // MARK: Actions
+    @IBAction func signUpTouched(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func signInTouched(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: true)
     }
 

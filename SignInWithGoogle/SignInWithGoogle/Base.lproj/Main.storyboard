@@ -55,7 +55,7 @@
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle2"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="signInTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v9j-Ra-UJS"/>
+                                            <action selector="signInTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OhI-pg-5Vm"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13p-fm-hn1">
@@ -102,8 +102,8 @@
                     <connections>
                         <outlet property="buttonSignIn" destination="VLF-gg-BdM" id="Kif-gh-mzx"/>
                         <outlet property="buttonSignUp" destination="6RN-FS-Wpd" id="pie-Sd-TMv"/>
-                        <outlet property="labelPassword" destination="lwL-M9-Vfx" id="4Cd-cF-O9h"/>
-                        <outlet property="labelUsername" destination="yuu-OM-xoU" id="OoW-H9-0nr"/>
+                        <outlet property="textfieldPassword" destination="lwL-M9-Vfx" id="4Cd-cF-O9h"/>
+                        <outlet property="textfieldUsername" destination="yuu-OM-xoU" id="OoW-H9-0nr"/>
                         <segue destination="Gsu-1r-cah" kind="show" identifier="signInToSignUp" id="sgg-uy-q4d"/>
                     </connections>
                 </viewController>
@@ -216,10 +216,10 @@
                     <connections>
                         <outlet property="buttonSignIn" destination="bEM-lh-gX9" id="dcG-9X-yr2"/>
                         <outlet property="buttonSignUp" destination="9OU-8x-0gP" id="5eL-9b-maG"/>
-                        <outlet property="labelConfirmPassword" destination="6o0-Ho-SBm" id="LI1-tK-6Wv"/>
-                        <outlet property="labelName" destination="Cr9-fh-k6X" id="pC2-oe-hgs"/>
-                        <outlet property="labelPassword" destination="zdQ-pG-zjF" id="mdM-lS-FJg"/>
-                        <outlet property="labelUsername" destination="TYe-nK-UTT" id="OJc-HP-MLV"/>
+                        <outlet property="textfieldConfirmPassword" destination="6o0-Ho-SBm" id="LI1-tK-6Wv"/>
+                        <outlet property="textfieldName" destination="Cr9-fh-k6X" id="pC2-oe-hgs"/>
+                        <outlet property="textfieldPassword" destination="zdQ-pG-zjF" id="mdM-lS-FJg"/>
+                        <outlet property="textfieldUsername" destination="TYe-nK-UTT" id="OJc-HP-MLV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knV-wL-4xS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
