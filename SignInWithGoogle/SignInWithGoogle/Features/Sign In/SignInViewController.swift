@@ -51,6 +51,11 @@ class SignInViewController: UIViewController {
                   self.performSegue(withIdentifier: self.signInToHome, sender: self)
             }
         }
+        
+        if Auth.auth().currentUser != nil {
+            /// If is already signed in, sends the app's main content View.
+              self.performSegue(withIdentifier: self.signInToHome, sender: self)
+        }
     }
     
     // MARK: - Actions
