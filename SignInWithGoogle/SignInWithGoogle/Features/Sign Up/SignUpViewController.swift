@@ -11,9 +11,7 @@ class SignUpViewController: UIViewController {
     
     // MARK: Outlets
     @IBOutlet weak var labelName: UITextField!
-    
     @IBOutlet weak var labelUsername: UITextField!
-    
     @IBOutlet weak var labelPassword: UITextField!
     @IBOutlet weak var labelConfirmPassword: UITextField!
     @IBOutlet weak var buttonSignUp: UIButton!
