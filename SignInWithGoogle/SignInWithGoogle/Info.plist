@@ -13,6 +13,17 @@
 			</array>
 		</dict>
 	</array>
+    <key>GIDClientID</key>
+    <string>651392488294-kkvf5r7g5711umv5qa0hd6ucs2smnqof.apps.googleusercontent.com</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>com.googleusercontent.apps.651392488294-kkvf5r7g5711umv5qa0hd6ucs2smnqof</string>
+            </array>
+        </dict>
+    </array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

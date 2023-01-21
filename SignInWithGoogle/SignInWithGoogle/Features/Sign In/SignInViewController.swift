@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
     
@@ -20,14 +21,14 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonSignIn: UIButton!
     @IBOutlet weak var buttonSignUp: UIButton!
     
+    @IBOutlet weak var buttonSignInGoogle: GIDSignInButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationController?.setNavigationBarHidden(true, animated: true)
         
-        textfieldUsername.delegate = self
-        textfieldPassword.delegate = self
+        initialSetup()
     }
     
     
@@ -51,14 +52,20 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
     @IBAction func signUpTouched(_ sender: UIButton) {
-        
-
         performSegue(withIdentifier: signInToSignUp, sender: self)
     }
     
+    
+    @IBAction func signInWithGoogle(_ sender: GIDSignInButton) {
+      GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+        guard error == nil else { return }
 
+        /// If sign in succeeded, display the app's main content View.
+          self.performSegue(withIdentifier: self.signInToHome, sender: self)
+      }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -77,6 +84,10 @@ extension SignInViewController {
         /// Textfields delegates
         textfieldUsername.delegate = self
         textfieldPassword.delegate = self
+        
+        /// Sign In w/ Google
+        buttonSignInGoogle.style = .wide
+//        buttonSignInGoogle.colorScheme = .dark
     }
     
     private func isFormValid() -> Bool {
