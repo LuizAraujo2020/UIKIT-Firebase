@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  SignInVariety
+//  SignInWithGoogle
 //
-//  Created by Luiz Araujo on 21/01/23.
+//  Created by Luiz Araujo on 20/01/23.
 //
 
 import UIKit
