@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SignInVariety/SignInVariety.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Grocr/Grocr.xcodeproj">
    </FileRef>
    <FileRef
