@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F7CE4A7297C339300B63DFD /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 6F7CE4A6297C339300B63DFD /* GoogleSignIn */; };
 		6F8EFB1B297B5CE6005CEA3E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8EFB1A297B5CE6005CEA3E /* SignUpViewController.swift */; };
 		6F8EFB1D297B5CF0005CEA3E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8EFB1C297B5CF0005CEA3E /* SignInViewController.swift */; };
 		6F8EFB20297B84AC005CEA3E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F8EFB1F297B84AC005CEA3E /* GoogleService-Info.plist */; };
@@ -64,6 +65,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F8EFB23297B852F005CEA3E /* FirebaseAuth in Frameworks */,
+				6F7CE4A7297C339300B63DFD /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +190,7 @@
 			name = SignInWithGoogle;
 			packageProductDependencies = (
 				6F8EFB22297B852F005CEA3E /* FirebaseAuth */,
+				6F7CE4A6297C339300B63DFD /* GoogleSignIn */,
 			);
 			productName = SignInWithGoogle;
 			productReference = 6FDBEC52297B2C4100CB6F40 /* SignInWithGoogle.app */;
@@ -263,6 +266,7 @@
 			mainGroup = 6FDBEC49297B2C4100CB6F40;
 			packageReferences = (
 				6F8EFB21297B852F005CEA3E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				6F7CE4A5297C339300B63DFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 6FDBEC53297B2C4100CB6F40 /* Products */;
 			projectDirPath = "";
@@ -656,6 +660,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6F7CE4A5297C339300B63DFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		6F8EFB21297B852F005CEA3E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -667,6 +679,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6F7CE4A6297C339300B63DFD /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F7CE4A5297C339300B63DFD /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
 		6F8EFB22297B852F005CEA3E /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6F8EFB21297B852F005CEA3E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
