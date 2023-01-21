@@ -116,7 +116,7 @@
         <scene sceneID="QaT-wX-Tzc">
             <objects>
                 <viewController id="PXE-M1-46l" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="C40-SD-P4I">
+                    <view key="view" contentMode="scaleToFill" id="C40-SD-P4I">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -130,7 +130,6 @@
                         <viewLayoutGuide key="safeArea" id="iSH-aS-yRV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="iSH-aS-yRV" firstAttribute="bottom" secondItem="s6J-ki-AqZ" secondAttribute="bottom" constant="361" id="0HI-fi-1SQ"/>
                             <constraint firstItem="iSH-aS-yRV" firstAttribute="trailing" secondItem="s6J-ki-AqZ" secondAttribute="trailing" id="5Xp-EK-UKC"/>
                             <constraint firstItem="s6J-ki-AqZ" firstAttribute="top" secondItem="iSH-aS-yRV" secondAttribute="top" constant="357" id="ndz-oG-FC8"/>
                             <constraint firstItem="s6J-ki-AqZ" firstAttribute="leading" secondItem="iSH-aS-yRV" secondAttribute="leading" id="rNZ-aX-VUe"/>
