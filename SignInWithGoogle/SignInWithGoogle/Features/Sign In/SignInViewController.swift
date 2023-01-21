@@ -9,6 +9,9 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
+    // MARK: Constants
+    let signInToSignUp = "signInToSignUp"
+    
     // MARK: Outlets
     @IBOutlet weak var labelUsername: UITextField!
     @IBOutlet weak var labelPassword: UITextField!
@@ -16,11 +19,15 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var buttonSignUp: UIButton!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     @IBAction func signInTouched(_ sender: Any) {
@@ -29,6 +36,8 @@ class SignInViewController: UIViewController {
     
     @IBAction func signUpTouched(_ sender: Any) {
         
+
+        performSegue(withIdentifier: signInToSignUp, sender: nil)
     }
     
 

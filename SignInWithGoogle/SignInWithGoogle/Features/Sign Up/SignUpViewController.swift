@@ -8,13 +8,32 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
+    
+    // MARK: Outlets
+    @IBOutlet weak var labelName: UITextField!
+    
+    @IBOutlet weak var labelUsername: UITextField!
+    
+    @IBOutlet weak var labelPassword: UITextField!
+    @IBOutlet weak var labelConfirmPassword: UITextField!
+    @IBOutlet weak var buttonSignUp: UIButton!
+    @IBOutlet weak var buttonSignIn: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    @IBAction func signUpTouched(_ sender: Any) {
+        
+    }
+    
+    @IBAction func signInTouched(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
+    }
 
     /*
     // MARK: - Navigation
