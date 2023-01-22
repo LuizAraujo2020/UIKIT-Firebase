@@ -16,7 +16,7 @@ class SignInViewController: UIViewController {
     let signInToHome   = "signInToHome"
     
     // MARK: Outlets
-    @IBOutlet weak var textfieldUsername: UITextField!
+    @IBOutlet weak var textfieldEmail: UITextField!
     @IBOutlet weak var textfieldPassword: UITextField!
     @IBOutlet weak var buttonSignIn: UIButton!
     @IBOutlet weak var buttonSignUp: UIButton!
@@ -64,7 +64,7 @@ class SignInViewController: UIViewController {
         if !isFormValid() { return }
         //TODO: ☑️ FAZER DEPOIS alertas
         
-        Auth.auth().signIn(withEmail: textfieldUsername.text!, password: textfieldPassword.text!) { firebaseResult, error in
+        Auth.auth().signIn(withEmail: textfieldEmail.text!, password: textfieldPassword.text!) { firebaseResult, error in
             
             if let error {
                 print("🐞 Error: \(error.localizedDescription)")
@@ -105,7 +105,7 @@ extension SignInViewController: UITextFieldDelegate {
     private func initialSetup() {
         
         /// Textfields delegates
-        textfieldUsername.delegate = self
+        textfieldEmail.delegate = self
         textfieldPassword.delegate = self
         
         /// Sign In w/ Google
@@ -116,7 +116,7 @@ extension SignInViewController: UITextFieldDelegate {
     private func isFormValid() -> Bool {
         //TODO: ☑️ More validations
         //TODO: ☑️ Make the Error types
-        guard textfieldUsername != nil, !textfieldUsername.text!.isEmpty else { return false }
+        guard textfieldEmail != nil, !textfieldEmail.text!.isEmpty else { return false }
         guard textfieldPassword != nil, !textfieldPassword.text!.isEmpty else { return false }
         
         return true
@@ -124,8 +124,8 @@ extension SignInViewController: UITextFieldDelegate {
 
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == textfieldUsername {
-            textfieldUsername.becomeFirstResponder()
+        if textField == textfieldEmail {
+            textfieldEmail.becomeFirstResponder()
         }
         
         if textField == textfieldPassword {
