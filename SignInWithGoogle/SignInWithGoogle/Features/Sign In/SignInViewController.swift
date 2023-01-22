@@ -17,7 +17,9 @@ class SignInViewController: UIViewController {
     
     // MARK: Outlets
     @IBOutlet weak var textfieldEmail: UITextField!
+    @IBOutlet weak var emailMatched: UILabel!
     @IBOutlet weak var textfieldPassword: UITextField!
+    @IBOutlet weak var passwordMatched: UILabel!
     @IBOutlet weak var buttonSignIn: UIButton!
     @IBOutlet weak var buttonSignUp: UIButton!
     
@@ -59,10 +61,10 @@ class SignInViewController: UIViewController {
         }
     }
     
+    
     // MARK: - Actions
     @IBAction func signInTouched(_ sender: UIButton) {
-        if !isFormValid() { return }
-        //TODO: ☑️ FAZER DEPOIS alertas
+
         
         Auth.auth().signIn(withEmail: textfieldEmail.text!, password: textfieldPassword.text!) { firebaseResult, error in
             
@@ -88,6 +90,45 @@ class SignInViewController: UIViewController {
       }
     }
     
+    
+    // MARK: - Validations
+    //TODO: ☑️ FAZER DEPOIS alerts
+    @IBAction func textfieldEmailEditing(_ sender: UITextField) {
+        
+        if sender.text?.isValidEmail() ?? false {
+            textfieldEmail.backgroundColor = .white
+            emailMatched.isHidden          = true
+            
+            
+            if textfieldPassword.text?.isValidPassword() ?? false {
+                buttonSignIn.isEnabled = true
+            }
+        } else {
+            textfieldEmail.backgroundColor = .red
+            emailMatched.isHidden          = false
+            buttonSignIn.isEnabled = false
+            
+        }
+    }
+    
+    @IBAction func textfieldPasswordEditing(_ sender: UITextField) {
+        
+        if sender.text?.isValidPassword() ?? false {
+            textfieldPassword.backgroundColor = .white
+            passwordMatched.isHidden          = true
+            
+            if textfieldEmail.text?.isValidEmail() ?? false {
+                buttonSignIn.isEnabled = true
+            }
+        } else {
+            textfieldPassword.backgroundColor = .red
+            passwordMatched.isHidden          = false
+            buttonSignIn.isEnabled = false
+        }
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 
@@ -111,15 +152,11 @@ extension SignInViewController: UITextFieldDelegate {
         /// Sign In w/ Google
         buttonSignInGoogle.style = .wide
 //        buttonSignInGoogle.colorScheme = .dark
-    }
-    
-    private func isFormValid() -> Bool {
-        //TODO: ☑️ More validations
-        //TODO: ☑️ Make the Error types
-        guard textfieldEmail != nil, !textfieldEmail.text!.isEmpty else { return false }
-        guard textfieldPassword != nil, !textfieldPassword.text!.isEmpty else { return false }
         
-        return true
+        
+        emailMatched.isHidden    = true
+        passwordMatched.isHidden = true
+        buttonSignIn.isEnabled   = false
     }
 
 
