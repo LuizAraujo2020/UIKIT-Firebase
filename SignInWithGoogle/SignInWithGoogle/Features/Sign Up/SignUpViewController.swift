@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textfieldUsername: UITextField!
     @IBOutlet weak var textfieldPassword: UITextField!
     @IBOutlet weak var textfieldConfirmPassword: UITextField!
+    
     @IBOutlet weak var buttonSignUp: UIButton!
     @IBOutlet weak var buttonSignIn: UIButton!
     
