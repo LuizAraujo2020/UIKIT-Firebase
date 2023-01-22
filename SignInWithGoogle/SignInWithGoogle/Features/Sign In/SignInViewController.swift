@@ -24,6 +24,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var buttonSignInGoogle: GIDSignInButton!
     
     
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
