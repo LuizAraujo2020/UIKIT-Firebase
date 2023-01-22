@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6F437D58297CD09E00216B61 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F437D57297CD09E00216B61 /* String+Extension.swift */; };
+		6F4C47C0297D883B0014E377 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4C47BF297D883B0014E377 /* UIView+Extension.swift */; };
 		6F7CE4A7297C339300B63DFD /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 6F7CE4A6297C339300B63DFD /* GoogleSignIn */; };
 		6F7CE4AA297C3D2C00B63DFD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7CE4A9297C3D2C00B63DFD /* HomeViewController.swift */; };
 		6F8EFB1B297B5CE6005CEA3E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8EFB1A297B5CE6005CEA3E /* SignUpViewController.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		6F437D57297CD09E00216B61 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		6F4C47BF297D883B0014E377 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		6F7CE4A9297C3D2C00B63DFD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		6F8EFB1A297B5CE6005CEA3E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6F8EFB1C297B5CF0005CEA3E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				6F437D57297CD09E00216B61 /* String+Extension.swift */,
+				6F4C47BF297D883B0014E377 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 			files = (
 				6FDBEC5A297B2C4100CB6F40 /* ViewController.swift in Sources */,
 				6F437D58297CD09E00216B61 /* String+Extension.swift in Sources */,
+				6F4C47C0297D883B0014E377 /* UIView+Extension.swift in Sources */,
 				6FDBEC56297B2C4100CB6F40 /* AppDelegate.swift in Sources */,
 				6F8EFB1B297B5CE6005CEA3E /* SignUpViewController.swift in Sources */,
 				6F8EFB1D297B5CF0005CEA3E /* SignInViewController.swift in Sources */,

@@ -147,11 +147,17 @@ extension SignInViewController: UITextFieldDelegate {
         
         /// Textfields delegates
         textfieldEmail.delegate = self
+        textfieldEmail.addShadow()
         textfieldPassword.delegate = self
+        textfieldPassword.addShadow()
+        
+        buttonSignIn.addShadow()
+//        buttonSignUp.addShadow()
         
         /// Sign In w/ Google
         buttonSignInGoogle.style = .wide
 //        buttonSignInGoogle.colorScheme = .dark
+        
         
         
         emailMatched.isHidden    = true

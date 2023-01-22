@@ -27,6 +27,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        initialSetup()
     }
     
     
@@ -68,6 +70,12 @@ extension SignUpViewController {
         textfieldUsername.delegate        = self
         textfieldPassword.delegate        = self
         textfieldConfirmPassword.delegate = self
+        
+        textfieldName.addShadow()
+        textfieldUsername.addShadow()
+        textfieldPassword.addShadow()
+        textfieldConfirmPassword.addShadow()
+        buttonSignUp.addShadow()
     }
     
     private func isFormValid() -> Bool {
