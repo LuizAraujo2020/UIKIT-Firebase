@@ -8,6 +8,7 @@
 import FirebaseDatabase
 
 class FirebaseManager {
+    
     let shared = FirebaseManager()
     
     // MARK: - References

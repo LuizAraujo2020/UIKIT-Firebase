@@ -17,16 +17,22 @@ enum References: String {
 }
 
 class HomeViewController: UIViewController {
-
-    let ref = Database.database().reference(withPath: "messages")
-    var refObservers: [DatabaseHandle] = []
-
+    
+    var user: User?
+    
+    var messages: [Message] = []
+    var messagesObservers: [DatabaseHandle] = []
+    
+    var handle: AuthStateDidChangeListenerHandle?
+    
     @IBOutlet weak var buttonSignOut: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        setUser()
     }
 
     @IBAction func signOutTouched(_ sender: UIButton) {
@@ -42,6 +48,17 @@ class HomeViewController: UIViewController {
             return
         }
     }
+    
+    // MARK: Methods
+    private func setUser() {
+        self.user = User(email: Auth.auth().currentUser?.email,
+                         name: Auth.auth().currentUser?.displayName,
+                         password: <#T##String#>)
+        
+        
+    }
+    
+    
     /*
     // MARK: - Navigation
 
