@@ -92,7 +92,7 @@ class SignInViewController: UIViewController {
     
     
     // MARK: - Validations
-    //TODO: ☑️ FAZER DEPOIS alerts
+    // TODO: ☑️ FAZER DEPOIS alerts
     @IBAction func textfieldEmailEditing(_ sender: UITextField) {
         
         if sender.text?.isValidEmail() ?? false {
@@ -106,7 +106,7 @@ class SignInViewController: UIViewController {
         } else {
             textfieldEmail.backgroundColor = .red
             emailMatched.isHidden          = false
-            buttonSignIn.isEnabled = false
+            buttonSignIn.isEnabled         = false
             
         }
     }

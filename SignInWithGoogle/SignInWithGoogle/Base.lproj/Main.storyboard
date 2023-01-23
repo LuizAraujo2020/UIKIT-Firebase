@@ -218,7 +218,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="kGy-n9-vwg">
                                 <rect key="frame" x="30" y="333.66666666666674" width="333" height="434.33333333333326"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cr9-fh-k6X">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cr9-fh-k6X">
                                         <rect key="frame" x="0.0" y="0.0" width="333" height="50"/>
                                         <color key="tintColor" systemColor="systemGray3Color"/>
                                         <constraints>
@@ -226,34 +226,80 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textfieldNameEditing:" destination="Gsu-1r-cah" eventType="editingChanged" id="QXs-Km-6bB"/>
+                                        </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TYe-nK-UTT">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aPi-fY-Pdq" userLabel="Stack Email">
                                         <rect key="frame" x="0.0" y="80" width="333" height="50"/>
-                                        <color key="tintColor" systemColor="systemGray3Color"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="PnZ-OR-9XI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zdQ-pG-zjF">
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TYe-nK-UTT">
+                                                <rect key="frame" x="0.0" y="0.0" width="333" height="50"/>
+                                                <color key="tintColor" systemColor="systemGray3Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="PnZ-OR-9XI"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textfieldEmailEditing:" destination="Gsu-1r-cah" eventType="editingChanged" id="SpV-re-YFZ"/>
+                                                </connections>
+                                            </textField>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please, insert a valid email." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFy-8S-bcX">
+                                                <rect key="frame" x="0.0" y="0.0" width="333" height="0.0"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SoU-zt-S8f" userLabel="Stack Password">
                                         <rect key="frame" x="0.0" y="160" width="333" height="50"/>
-                                        <color key="tintColor" systemColor="systemGray3Color"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="gb9-Sh-8Th"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6o0-Ho-SBm">
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zdQ-pG-zjF">
+                                                <rect key="frame" x="0.0" y="0.0" width="333" height="50"/>
+                                                <color key="tintColor" systemColor="systemGray3Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="gb9-Sh-8Th"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textfieldPasswordEditing:" destination="Gsu-1r-cah" eventType="editingChanged" id="j9G-6D-ftJ"/>
+                                                </connections>
+                                            </textField>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vM3-xY-9nb">
+                                                <rect key="frame" x="0.0" y="0.0" width="333" height="0.0"/>
+                                                <string key="text">This is a rather strong password which requires at least eight characters, with small  and capital letters, special cases and numbers.</string>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5He-v8-jLp" userLabel="Stack Confirm">
                                         <rect key="frame" x="0.0" y="239.99999999999994" width="333" height="50"/>
-                                        <color key="tintColor" systemColor="systemGray3Color"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="nJS-dr-Jfv"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6o0-Ho-SBm">
+                                                <rect key="frame" x="0.0" y="0.0" width="333" height="50"/>
+                                                <color key="tintColor" systemColor="systemGray3Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="nJS-dr-Jfv"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="textfieldConfirmPasswordEditing:" destination="Gsu-1r-cah" eventType="editingChanged" id="eIO-Lj-HRR"/>
+                                                </connections>
+                                            </textField>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The confirmation doesn't match." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8b-ll-ce9">
+                                                <rect key="frame" x="0.0" y="0.0" width="333" height="0.0"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9OU-8x-0gP">
                                         <rect key="frame" x="0.0" y="319.99999999999994" width="333" height="50"/>
                                         <constraints>
@@ -306,10 +352,13 @@
                     <connections>
                         <outlet property="buttonSignIn" destination="bEM-lh-gX9" id="dcG-9X-yr2"/>
                         <outlet property="buttonSignUp" destination="9OU-8x-0gP" id="5eL-9b-maG"/>
+                        <outlet property="confirmMatched" destination="I8b-ll-ce9" id="anT-Lm-6gX"/>
+                        <outlet property="emailMatched" destination="eFy-8S-bcX" id="GOe-RK-Xuo"/>
+                        <outlet property="passwordMatched" destination="vM3-xY-9nb" id="Zxv-OW-5b0"/>
                         <outlet property="textfieldConfirmPassword" destination="6o0-Ho-SBm" id="LI1-tK-6Wv"/>
+                        <outlet property="textfieldEmail" destination="TYe-nK-UTT" id="OJc-HP-MLV"/>
                         <outlet property="textfieldName" destination="Cr9-fh-k6X" id="pC2-oe-hgs"/>
                         <outlet property="textfieldPassword" destination="zdQ-pG-zjF" id="mdM-lS-FJg"/>
-                        <outlet property="textfieldUsername" destination="TYe-nK-UTT" id="OJc-HP-MLV"/>
                         <segue destination="PXE-M1-46l" kind="show" identifier="signUpToHome" id="Tpb-dH-oBj"/>
                     </connections>
                 </viewController>
