@@ -7,53 +7,60 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 import GoogleSignIn
 
 import Photos
-//import UIKit
-//
-//import Firebase
-//import GoogleSignIn
-//import GoogleMobileAds
 
-//class HomeViewController: UIViewController {
-//
-//
-//    @IBOutlet weak var buttonSignOut: UIButton!
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        navigationController?.setNavigationBarHidden(true, animated: true)
-//    }
-//
-//    @IBAction func signOutTouched(_ sender: UIButton) {
-//        print("☝🏾SIGN OUT TOUCHED")
-//        print("☝🏾SIGN OUT TOUCHED")
-//        print("☝🏾SIGN OUT TOUCHED")
-//        GIDSignIn.sharedInstance.signOut()
-//        do {
-//            try Auth.auth().signOut()
-//
-//            /// Send back to Sign In screen
-//            navigationController?.popToRootViewController(animated: true)
-//        } catch {
-//            //TODO: ☑️ Tratar erro
-//            return
-//        }
-//    }
-//    /*
-//    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destination.
-//        // Pass the selected object to the new view controller.
-//    }
-//    */
-//
-//}
+enum References: String {
+    case messages
+}
 
+class HomeViewController: UIViewController {
+
+    let ref = Database.database().reference(withPath: "messages")
+    var refObservers: [DatabaseHandle] = []
+
+    @IBOutlet weak var buttonSignOut: UIButton!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+
+    @IBAction func signOutTouched(_ sender: UIButton) {
+        
+        GIDSignIn.sharedInstance.signOut()
+        do {
+            try Auth.auth().signOut()
+
+            /// Send back to Sign In screen
+            navigationController?.popToRootViewController(animated: true)
+        } catch {
+            //TODO: ☑️ Tratar erro
+            return
+        }
+    }
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
+
+/*
+
+import UIKit
+
+import Firebase
+import GoogleSignIn
+import GoogleMobileAds
 /**
  * AdMob ad unit IDs are not currently stored inside the google-services.plist file. Developers
  * using AdMob can store them as custom values in another plist, or simply use constants. Note that
@@ -311,3 +318,5 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
   }
 
 }
+*/
+
