@@ -5,11 +5,19 @@
 //  Created by Luiz Araujo on 23/01/23.
 //
 
+import FirebaseAuth
 import FirebaseDatabase
+import GoogleSignIn
 
 class FirebaseManager {
     
-    let shared = FirebaseManager()
+    static let shared = FirebaseManager()
+    var userAuth: FirebaseAuth.User? {
+        Auth.auth().currentUser
+    }
+    var userGoogle: GIDGoogleUser? {
+        GIDSignIn.sharedInstance.currentUser
+    }
     
     // MARK: - References
     let referenceRoot     = Database.database().reference()
@@ -17,17 +25,31 @@ class FirebaseManager {
     let referenceUsers    = Database.database().reference(withPath: "user")
     
     init() {}
-    
-    
-    // MARK: Users
-    func saveUser(_ user: User) {
-        //TODO: ☑️ throwable
-        referenceUsers.setValue(user.toAnyObject)
-    }
+
     
     // MARK: Messages
     func saveMessage(_ message: Message) {
         //TODO: ☑️ throwable
-        referenceUsers.setValue(message.toAnyObject)
+        
+        referenceRoot.child("messages").child(getUser().id).setValue(message.toAnyObject())
+    }
+    
+    // MARK: User Helpers
+    private func getUser() -> User {
+        
+        if let usr = userAuth {
+            return User(id: usr.uid,
+                        email: usr.email ?? "",
+                        name: usr.displayName ?? "")
+            
+        } else if let usr = userGoogle {
+            return User(id: usr.userID ?? "",
+                        email: usr.profile?.email ?? "",
+                        name: usr.profile?.name ?? "anonymous")
+        }
+        
+        return User(id: "",
+                    email: "",
+                    name: "anonymous")
     }
 }

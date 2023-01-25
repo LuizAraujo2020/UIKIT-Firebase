@@ -35,10 +35,13 @@ struct Message {
     }
     
     /// Convert User to AnyObject.
-    func toAnyObject() -> Any {
-        return [
-            "text": text,
-            "name": name
+    func toAnyObject() -> NSDictionary {
+        
+        let dictionary: NSDictionary = [
+            "name" : name,
+            "text": text
         ]
+        
+        return dictionary
     }
 }

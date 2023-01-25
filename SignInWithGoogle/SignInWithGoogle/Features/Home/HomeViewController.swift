@@ -16,7 +16,7 @@ enum References: String {
     case messages
 }
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITextFieldDelegate {
     
     var user: User?
     
@@ -25,12 +25,16 @@ class HomeViewController: UIViewController {
     
     var handle: AuthStateDidChangeListenerHandle?
     
+    @IBOutlet weak var textfieldMessage: UITextField!
     @IBOutlet weak var buttonSignOut: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        textfieldMessage.delegate = self
+        textfieldMessage.addShadow()
         
         setUser()
     }
@@ -51,12 +55,33 @@ class HomeViewController: UIViewController {
     
     // MARK: Methods
     private func setUser() {
-        self.user = User(email: Auth.auth().currentUser?.email,
-                         name: Auth.auth().currentUser?.displayName,
-                         password: <#T##String#>)
+//        self.user = User(email: Auth.auth().currentUser?.email,
+//                         name: Auth.auth().currentUser?.displayName,
+//                         password: <#T##String#>)
         
         
     }
+    
+    
+    
+//
+//    @IBAction func textfieldDidEndEditing(_ sender: UITextField) {
+//
+//    }
+    
+    
+    @IBAction func sendMessage(_ sender: UIButton) {
+        
+        guard let text = textfieldMessage.text else { return }
+        
+        
+        let message = Message(text: text,
+                              name: Auth.auth().currentUser?.displayName ?? "Anonymous")
+        
+        FirebaseManager.shared.saveMessage(message)
+    }
+    
+    
     
     
     /*

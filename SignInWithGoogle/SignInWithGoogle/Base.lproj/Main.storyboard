@@ -161,14 +161,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6J-ki-AqZ">
-                                <rect key="frame" x="0.0" y="460" width="393" height="40.666666666666686"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFx-O3-pVl">
-                                <rect key="frame" x="0.0" y="103" width="393" height="50"/>
+                                <rect key="frame" x="0.0" y="777" width="393" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="E7v-H0-3Yb"/>
                                 </constraints>
@@ -178,15 +172,48 @@
                                     <action selector="signOutTouched:" destination="PXE-M1-46l" eventType="touchUpInside" id="oO6-J4-C1g"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6J-ki-AqZ">
+                                <rect key="frame" x="0.0" y="90" width="393" height="40.666666666666657"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="erA-Py-3ZS">
+                                <rect key="frame" x="30" y="669" width="333" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vBW-xk-5Gs" userLabel="message">
+                                        <rect key="frame" x="0.0" y="0.0" width="245" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="bem-b9-3wN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvR-mi-Piq">
+                                        <rect key="frame" x="245" y="0.0" width="88" height="50"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" image="paperplane.fill" catalog="system" title="send"/>
+                                        <connections>
+                                            <action selector="sendMessage:" destination="PXE-M1-46l" eventType="touchUpInside" id="sAl-6b-Yfq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="VPf-TM-BZb"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iSH-aS-yRV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="iSH-aS-yRV" firstAttribute="bottom" secondItem="erA-Py-3ZS" secondAttribute="bottom" constant="50" id="1Z9-5Q-gau"/>
                             <constraint firstItem="JFx-O3-pVl" firstAttribute="leading" secondItem="iSH-aS-yRV" secondAttribute="leading" id="51f-CF-CUq"/>
                             <constraint firstItem="iSH-aS-yRV" firstAttribute="trailing" secondItem="s6J-ki-AqZ" secondAttribute="trailing" id="5Xp-EK-UKC"/>
-                            <constraint firstItem="JFx-O3-pVl" firstAttribute="top" secondItem="iSH-aS-yRV" secondAttribute="top" id="Dvr-Li-2zh"/>
+                            <constraint firstItem="JFx-O3-pVl" firstAttribute="top" secondItem="iSH-aS-yRV" secondAttribute="top" constant="674" id="Dvr-Li-2zh"/>
                             <constraint firstItem="iSH-aS-yRV" firstAttribute="trailing" secondItem="JFx-O3-pVl" secondAttribute="trailing" id="EIQ-HP-gc6"/>
-                            <constraint firstItem="s6J-ki-AqZ" firstAttribute="top" secondItem="iSH-aS-yRV" secondAttribute="top" constant="357" id="ndz-oG-FC8"/>
+                            <constraint firstItem="iSH-aS-yRV" firstAttribute="trailing" secondItem="erA-Py-3ZS" secondAttribute="trailing" constant="30" id="naw-TN-YhW"/>
+                            <constraint firstItem="s6J-ki-AqZ" firstAttribute="top" secondItem="iSH-aS-yRV" secondAttribute="top" constant="-13" id="ndz-oG-FC8"/>
+                            <constraint firstItem="erA-Py-3ZS" firstAttribute="leading" secondItem="iSH-aS-yRV" secondAttribute="leading" constant="30" id="qbs-09-9cy"/>
                             <constraint firstItem="s6J-ki-AqZ" firstAttribute="leading" secondItem="iSH-aS-yRV" secondAttribute="leading" id="rNZ-aX-VUe"/>
                         </constraints>
                     </view>
@@ -195,11 +222,12 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonSignOut" destination="JFx-O3-pVl" id="cB2-dQ-8hU"/>
+                        <outlet property="textfieldMessage" destination="vBW-xk-5Gs" id="NRc-33-JCo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RMi-lD-uj1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1816" y="322"/>
+            <point key="canvasLocation" x="1814.5038167938931" y="321.83098591549299"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="EKI-Ia-7Ch">
@@ -390,6 +418,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="design" width="430" height="932"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="119"/>
         <namedColor name="AccentColor">
             <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
