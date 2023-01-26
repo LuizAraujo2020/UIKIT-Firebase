@@ -153,7 +153,7 @@
             </objects>
             <point key="canvasLocation" x="947.32824427480909" y="-27.464788732394368"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Title-->
         <scene sceneID="QaT-wX-Tzc">
             <objects>
                 <viewController id="PXE-M1-46l" customClass="HomeViewController" customModule="SignInWithGoogle" customModuleProvider="target" sceneMemberID="viewController">
@@ -161,18 +161,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="erA-Py-3ZS" userLabel="HStack">
-                                <rect key="frame" x="30" y="719" width="333" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="erA-Py-3ZS" userLabel="HStack">
+                                <rect key="frame" x="30" y="669" width="333" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vBW-xk-5Gs" userLabel="message">
-                                        <rect key="frame" x="0.0" y="0.0" width="245" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="252.33333333333334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvR-mi-Piq">
-                                        <rect key="frame" x="245" y="0.0" width="88" height="50"/>
+                                        <rect key="frame" x="282.33333333333331" y="0.0" width="50.666666666666686" height="50"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" image="paperplane.fill" catalog="system" title="send"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="paperplane.fill" catalog="system"/>
                                         <connections>
                                             <action selector="sendMessage:" destination="PXE-M1-46l" eventType="touchUpInside" id="sAl-6b-Yfq"/>
                                         </connections>
@@ -183,7 +183,7 @@
                                 </constraints>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zxa-2Y-xdz">
-                                <rect key="frame" x="0.0" y="103" width="393" height="616"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="566"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageTableViewCell" textLabel="mZD-Pp-kow" detailTextLabel="41X-ht-UjG" style="IBUITableViewCellStyleSubtitle" id="DZu-hX-aHy">
@@ -213,21 +213,12 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OWe-1a-hz3">
-                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" id="tAl-N2-be6">
-                                        <barButtonItem key="rightBarButtonItem" title="Sign Out" style="plain" id="umS-nB-v4r"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iSH-aS-yRV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="erA-Py-3ZS" firstAttribute="leading" secondItem="iSH-aS-yRV" secondAttribute="leading" constant="30" id="3Wz-Yr-230"/>
-                            <constraint firstItem="iSH-aS-yRV" firstAttribute="bottom" secondItem="erA-Py-3ZS" secondAttribute="bottom" id="ghj-s8-RHN"/>
+                            <constraint firstItem="iSH-aS-yRV" firstAttribute="bottom" secondItem="erA-Py-3ZS" secondAttribute="bottomMargin" constant="50" id="ghj-s8-RHN"/>
                             <constraint firstItem="iSH-aS-yRV" firstAttribute="trailing" secondItem="erA-Py-3ZS" secondAttribute="trailing" constant="30" id="huK-QR-owE"/>
                             <constraint firstItem="zxa-2Y-xdz" firstAttribute="trailing" secondItem="iSH-aS-yRV" secondAttribute="trailing" id="iZR-Fz-Avt"/>
                             <constraint firstItem="zxa-2Y-xdz" firstAttribute="leading" secondItem="iSH-aS-yRV" secondAttribute="leading" id="nMc-tb-Zzm"/>
@@ -236,9 +227,16 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="xoA-UD-tVz">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="dFA-xb-HmK">
+                            <connections>
+                                <action selector="signoutActtion:" destination="PXE-M1-46l" id="8QT-yE-HLs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="buttonSignOut" destination="umS-nB-v4r" id="WjC-No-aeK"/>
+                        <outlet property="buttonSignOut" destination="dFA-xb-HmK" id="WAG-5E-xpg"/>
                         <outlet property="table" destination="zxa-2Y-xdz" id="1MI-kx-JuZ"/>
                         <outlet property="textfieldMessage" destination="vBW-xk-5Gs" id="NRc-33-JCo"/>
                     </connections>

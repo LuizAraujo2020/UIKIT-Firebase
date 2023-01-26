@@ -24,9 +24,7 @@ class HomeViewController: ViewController, UITextFieldDelegate {
     var messagesObservers: [DatabaseHandle] = []
     
     //    var handle: AuthStateDidChangeListenerHandle?
-    
-    private var buttonSignOut = UIBarButtonItem()
-    
+        
     @IBOutlet weak var textfieldMessage: UITextField!
     @IBOutlet weak var buttonSignOut: UIBarButtonItem!
     @IBOutlet weak var table: UITableView!
@@ -98,12 +96,10 @@ class HomeViewController: ViewController, UITextFieldDelegate {
     
     private func initialSetup() {
         
-        
-        buttonSignOut = UIBarButtonItem.signOut(target: self, action: #selector(signOutTouched))
-        navigationItem.rightBarButtonItem = buttonSignOut
-        
         self.table.delegate   = self
         self.table.dataSource = self
+        
+        navigationItem.hidesBackButton = true
     }
     
     // MARK: Methods
@@ -127,11 +123,24 @@ class HomeViewController: ViewController, UITextFieldDelegate {
         
         FirebaseManager.shared.saveMessage(message)
         
+        textfieldMessage.text = ""
+        
         self.table.reloadData()
+        
+        scrollToBottom()
+    }
+    
+    /// Scroll Table to botton
+    func scrollToBottom() {
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: self.messages.count-1, section: 0)
+            self.table.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
     
     // MARK: - Actions
-    @IBAction func signOutTouched(_ sender: UIButton) {
+    
+    @IBAction func signoutActtion(_ sender: UIBarButtonItem) {
         
         GIDSignIn.sharedInstance.signOut()
         do {
@@ -144,7 +153,6 @@ class HomeViewController: ViewController, UITextFieldDelegate {
             return
         }
     }
-    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
