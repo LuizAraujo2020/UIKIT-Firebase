@@ -12,10 +12,10 @@ import GoogleSignIn
 class FirebaseManager {
     
     static let shared = FirebaseManager()
-    var userAuth: FirebaseAuth.User? {
+    private var userAuth: FirebaseAuth.User? {
         Auth.auth().currentUser
     }
-    var userGoogle: GIDGoogleUser? {
+    private var userGoogle: GIDGoogleUser? {
         GIDSignIn.sharedInstance.currentUser
     }
     
@@ -30,12 +30,18 @@ class FirebaseManager {
     // MARK: Messages
     func saveMessage(_ message: Message) {
         //TODO: ☑️ throwable
+        /// Uses the Timestamp as ID
+        let timestamp = Date().currentTimeMillis()
+
+        print("⏱️⏱️⏱️⏱️⏱️")
+        print(timestamp)
+        print("⏱️⏱️⏱️⏱️⏱️")
         
-        referenceRoot.child("messages").child(getUser().id).setValue(message.toAnyObject())
+        referenceRoot.child("messages").child(String(timestamp)).setValue(message.toAnyObject())
     }
     
     // MARK: User Helpers
-    private func getUser() -> User {
+    func getUser() -> User {
         
         if let usr = userAuth {
             return User(id: usr.uid,

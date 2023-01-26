@@ -30,4 +30,10 @@ extension String {
         let phoneTest = NSPredicate(format:"SELF MATCHES %@", regex)
         return phoneTest.evaluate(with: self)
     }
+    
+    func getDateFromStringTimestamp() -> NSDate? {
+        guard let myTimeInterval = TimeInterval(self) else { return nil }
+        
+        return NSDate(timeIntervalSince1970: TimeInterval(myTimeInterval))
+    }
 }
