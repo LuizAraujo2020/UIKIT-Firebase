@@ -19,6 +19,7 @@ class FirebaseManager {
         GIDSignIn.sharedInstance.currentUser
     }
     
+    
     // MARK: - References
     let referenceRoot     = Database.database().reference()
     let referenceMessages = Database.database().reference(withPath: "messages")
@@ -26,21 +27,7 @@ class FirebaseManager {
     
     init() {}
 
-    
-    // MARK: Messages
-    func saveMessage(_ message: Message) {
-        //TODO: ☑️ throwable
-        /// Uses the Timestamp as ID
-        let timestamp = Date().currentTimeMillis()
-
-        print("⏱️⏱️⏱️⏱️⏱️")
-        print(timestamp)
-        print("⏱️⏱️⏱️⏱️⏱️")
-        
-        referenceRoot.child("messages").child(String(timestamp)).setValue(message.toAnyObject())
-    }
-    
-    // MARK: User Helpers
+    // MARK: -Typ User Helpers
     func getUser() -> User {
         
         if let usr = userAuth {
@@ -57,5 +44,14 @@ class FirebaseManager {
         return User(id: "",
                     email: "",
                     name: "anonymous")
+    }
+    
+    // MARK: Messages
+    func saveMessage(_ message: Message) {
+        //TODO: ☑️ throwable
+        /// Uses the Timestamp as ID
+        let timestamp = Date().currentTimeMillis()
+        
+        referenceRoot.child("messages").child(String(timestamp)).setValue(message.toAnyObject())
     }
 }

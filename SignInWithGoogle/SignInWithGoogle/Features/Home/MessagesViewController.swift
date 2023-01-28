@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  MessagesViewController.swift
 //  SignInWithGoogle
 //
 //  Created by Luiz Araujo on 21/01/23.
@@ -14,7 +14,7 @@ enum References: String {
     case messages
 }
 
-class HomeViewController: UIViewController, UITextFieldDelegate {
+class MessagesViewController: UIViewController, UITextFieldDelegate {
     
     var user: User?
     let ref = Database.database().reference().child("messages")
@@ -142,7 +142,7 @@ class HomeViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }

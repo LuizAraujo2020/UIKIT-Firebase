@@ -51,7 +51,6 @@ class HomeTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         stackHeader.isHidden.toggle()
-        
     }
     
     required init?(coder: NSCoder) {
