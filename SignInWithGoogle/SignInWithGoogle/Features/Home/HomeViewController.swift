@@ -168,13 +168,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         //        cell.textLabel?.text = "This is row \(indexPath.row)"
         
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        let cell = table.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         let msg = messages[indexPath.row]
-        print("🔄 NAME: \(msg.name) - TXXT: \(msg.text)")
+
         cell.textLabel?.text       = msg.text
-        cell.detailTextLabel?.text = msg.name
-        
-        //        toggleCellCheckbox(cell, isCompleted: groceryItem.completed)
+        cell.detailTextLabel?.text = msg.email
         
         return cell
     }
