@@ -61,26 +61,15 @@ class HomeViewController: ViewController, UITextFieldDelegate {
                     if
                         let snapshot = child as? DataSnapshot,
                         let messageItem = Message(snapshot: snapshot) {
-                        print("🏆 \(messageItem.text)")
+
                         newItems.append(messageItem)
                     }
                 }
                 self.messages = newItems
-                for m in self.messages {
-                    print("🥳 \(m.text)")
-                }
                 self.table.reloadData()
             }
         messagesObservers.append(completed)
         
-        //        handle = Auth.auth().addStateDidChangeListener { _, user in
-        //            guard let user = user else { return }
-        //            self.user = User(authData: user)
-        //
-        //            let currentUserRef = self.usersRef.child(user.uid)
-        //            currentUserRef.setValue(user.email)
-        //            currentUserRef.onDisconnectRemoveValue()
-        //        }
         self.user = FirebaseManager.shared.getUser()
     }
     
@@ -163,11 +152,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //
-        //        let cell = UITableViewCell()
-        //        cell.textLabel?.text = "This is row \(indexPath.row)"
-        
-        
         let cell = table.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         let msg = messages[indexPath.row]
 
@@ -176,8 +160,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
