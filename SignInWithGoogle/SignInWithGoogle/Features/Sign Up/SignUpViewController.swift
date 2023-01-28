@@ -56,30 +56,6 @@ class SignUpViewController: UIViewController {
     
     // MARK: - Validations
     // TODO: ☑️ FAZER DEPOIS alerts
-    //    private func validateEmail(_ field: UITextField, message: UILabel, button: UIButton? = nil) {
-    //
-    //        guard let text = field.text else { return }
-    //
-    //
-    //        if text.isValidEmail() {
-    //
-    //            field.backgroundColor = .white
-    //            message.isHidden      = true
-    //
-    //            //            if textfieldPassword.text?.isValidPassword() ?? false && textfieldPassword.text == textfieldConfirmPassword.text {
-    //            //                buttonSignUp.isEnabled = true
-    //            //            }
-    //
-    //        } else {
-    //            field.backgroundColor = .red
-    //            message.isHidden      = false
-    //
-    //            if let button {
-    //                button.isEnabled = false
-    //            }
-    //        }
-    //    }
-    
     private func validateField(_ field: UITextField, type: TypeOfField ,message: UILabel, button: UIButton? = nil) {
         
         guard let text = field.text else { return }
@@ -121,89 +97,35 @@ class SignUpViewController: UIViewController {
                 message.isHidden      = false
             }
         }
-
         
-        if let email = textfieldEmail.text,
-        let pass = textfieldPassword.text,
+        if let email   = textfieldEmail.text,
+           let pass    = textfieldPassword.text,
            let confirm = textfieldConfirmPassword.text,
-            email.isValidEmail(),
-            pass.isValidPassword(),
+           email.isValidEmail(),
+           pass.isValidPassword(),
            confirm == pass {
             
             buttonSignUp.isEnabled = true
             
         } else {
             buttonSignUp.isEnabled = false
+            
         }
-        
-        
     }
-    //        private func validateConfirmation() {
-    //
-    //        }
-    
-    
-    @IBAction func textfieldNameEditing(_ sender: UITextField) {
-    }
-    
     
     @IBAction func textfieldEmailEditing(_ sender: UITextField) {
-        validateField(sender, type: .email, message: emailMatched, button: buttonSignUp)
         
+        validateField(sender, type: .email, message: emailMatched, button: buttonSignUp)
     }
-    
-    
     
     @IBAction func textfieldPasswordEditing(_ sender: UITextField) {
+        
         validateField(sender, type: .password, message: passwordMatched, button: buttonSignUp)
-        //        validatePassword(sender, message: emailMatched, button: buttonSignUp)
-        
-        
-        //        if sender.text?.isValidPassword() ?? false {
-        //            textfieldPassword.backgroundColor = .white
-        //            passwordMatched.isHidden          = true
-        //
-        //            if textfieldEmail.text?.isValidEmail() ?? false && textfieldPassword.text == textfieldConfirmPassword.text {
-        //                buttonSignUp.isEnabled = true
-        //            }
-        //        } else {
-        //            textfieldPassword.backgroundColor = .red
-        //            passwordMatched.isHidden          = false
-        //            buttonSignUp.isEnabled            = false
-        //        }
-        //
-        //
-        //
-        //        if textfieldPassword.text != textfieldConfirmPassword.text {
-        //            textfieldConfirmPassword.backgroundColor = .red
-        //            confirmMatched.isHidden                  = false
-        //            buttonSignUp.isEnabled                   = false
-        //        } else {
-        //            textfieldPassword.backgroundColor = .white
-        //            passwordMatched.isHidden          = true
-        //        }
     }
     
-    
     @IBAction func textfieldConfirmPasswordEditing(_ sender: UITextField) {
-        //            guard let text = sender.text, text == textfieldPassword.text else {
-        //                textfieldConfirmPassword.backgroundColor = .red
-        //                confirmMatched.isHidden                  = false
-        //                buttonSignUp.isEnabled                   = false
-        //
-        //                return
-        //            }
-        //
-        //            textfieldConfirmPassword.backgroundColor = .white
-        //            confirmMatched.isHidden                  = true
-        //
-        //            if textfieldEmail.text?.isValidEmail() ?? false && sender.text?.isValidPassword() ?? false {
-        //                buttonSignUp.isEnabled = true
-        //            }
-        //        }
         
         validateField(sender, type: .confirmation, message: confirmMatched, button: buttonSignUp)
-        
     }
 }
 
@@ -260,23 +182,8 @@ extension SignUpViewController: UITextFieldDelegate {
 
 
 extension SignUpViewController {
+    
     enum TypeOfField {
         case name, email, password, confirmation
-        
-        //        func validate(_ text: String) -> Bool {
-        //            switch self {
-        //            case .name:
-        //                return true
-        //
-        //            case .email:
-        //                return text.isValidEmail()
-        //
-        //            case .password:
-        //                return text.isValidPassword()
-        //
-        //            case .confirmation:
-        //                <#code#>
-        //            }
-        //        }
     }
 }

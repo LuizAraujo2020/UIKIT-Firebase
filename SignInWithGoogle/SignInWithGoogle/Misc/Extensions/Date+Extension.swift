@@ -5,7 +5,7 @@
 //  Created by Luiz Araujo on 25/01/23.
 //
 
-import Foundation
+import UIKit
 
 extension Date {
     func currentTimeMillis() -> Int64 {

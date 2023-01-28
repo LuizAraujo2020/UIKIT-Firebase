@@ -26,9 +26,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var buttonSignInGoogle: GIDSignInButton!
     
     
-    
     // MARK: - Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,7 +44,7 @@ class SignInViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
-    //
+    
     private func checkSignedIn() {
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if error == nil && user != nil {
@@ -126,19 +124,6 @@ class SignInViewController: UIViewController {
             buttonSignIn.isEnabled = false
         }
     }
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 // MARK: - Setups & UITextFieldDelegate
@@ -152,13 +137,9 @@ extension SignInViewController: UITextFieldDelegate {
         textfieldPassword.addShadow()
         
         buttonSignIn.addShadow()
-//        buttonSignUp.addShadow()
         
         /// Sign In w/ Google
         buttonSignInGoogle.style = .wide
-//        buttonSignInGoogle.colorScheme = .dark
-        
-        
         
         emailMatched.isHidden    = true
         passwordMatched.isHidden = true

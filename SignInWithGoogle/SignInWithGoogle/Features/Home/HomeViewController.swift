@@ -10,13 +10,11 @@ import Firebase
 import FirebaseDatabase
 import GoogleSignIn
 
-import Photos
-
 enum References: String {
     case messages
 }
 
-class HomeViewController: ViewController, UITextFieldDelegate {
+class HomeViewController: UIViewController, UITextFieldDelegate {
     
     var user: User?
     let ref = Database.database().reference().child("messages")

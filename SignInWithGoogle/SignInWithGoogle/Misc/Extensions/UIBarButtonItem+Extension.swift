@@ -18,5 +18,4 @@ extension UIBarButtonItem {
         
         return UIBarButtonItem(title: title, style: .done, target: target, action: action)
     }
-
 }
