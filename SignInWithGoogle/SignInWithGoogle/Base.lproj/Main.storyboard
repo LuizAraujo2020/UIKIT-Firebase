@@ -270,9 +270,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="textfieldNameEditing:" destination="Gsu-1r-cah" eventType="editingChanged" id="QXs-Km-6bB"/>
-                                        </connections>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aPi-fY-Pdq" userLabel="Stack Email">
                                         <rect key="frame" x="0.0" y="80" width="333" height="50"/>
@@ -401,9 +398,9 @@
                         <outlet property="passwordMatched" destination="vM3-xY-9nb" id="Zxv-OW-5b0"/>
                         <outlet property="textfieldConfirmPassword" destination="6o0-Ho-SBm" id="LI1-tK-6Wv"/>
                         <outlet property="textfieldEmail" destination="TYe-nK-UTT" id="OJc-HP-MLV"/>
-                        <outlet property="textfieldName" destination="Cr9-fh-k6X" id="pC2-oe-hgs"/>
+                        <outlet property="textfieldName" destination="Cr9-fh-k6X" id="jkd-8o-cLj"/>
                         <outlet property="textfieldPassword" destination="zdQ-pG-zjF" id="mdM-lS-FJg"/>
-                        <segue destination="PXE-M1-46l" kind="show" identifier="signUpToHome" id="Tpb-dH-oBj"/>
+                        <segue destination="PXE-M1-46l" kind="show" identifier="signUpToMessages" id="Tpb-dH-oBj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knV-wL-4xS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -430,7 +427,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5vU-ln-qre"/>
+        <segue reference="Tpb-dH-oBj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="design" width="430" height="932"/>

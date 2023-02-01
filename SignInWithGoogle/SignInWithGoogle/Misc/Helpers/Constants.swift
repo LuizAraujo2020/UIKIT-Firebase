@@ -9,14 +9,18 @@ import Foundation
 
 struct Constants {
     
-    struct Segues {
-        
-        static let signInToSignUp = "signInToSignUp"
-        static let signInToMessages   = "signInToMessages"
-        static let signUpToMessages   = "signUpToMessages"
-    }
-
     struct Storyboards {
         static let homeViewController = "HomeVC"
+    }
+    
+    struct Cells {
+        static let cellID = "MessageTableViewCell"
+    }
+    
+    struct Segues {
+        
+        static let signInToSignUp   = "signInToSignUp"
+        static let signInToMessages = "signInToMessages"
+        static let signUpToMessages = "signUpToMessages"
     }
 }

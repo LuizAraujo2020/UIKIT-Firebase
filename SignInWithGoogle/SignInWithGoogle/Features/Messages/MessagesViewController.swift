@@ -27,8 +27,6 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonSignOut: UIBarButtonItem!
     @IBOutlet weak var table: UITableView!
     
-    private let cellID = "MessageTableViewCell"
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,7 +148,7 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = table.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+        let cell = table.dequeueReusableCell(withIdentifier: Constants.Cells.cellID, for: indexPath)
         let msg = messages[indexPath.row]
 
         cell.textLabel?.text       = msg.text

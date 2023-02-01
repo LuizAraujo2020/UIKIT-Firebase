@@ -22,8 +22,12 @@ class FirebaseManager {
     
     // MARK: - References
     let referenceRoot     = Database.database().reference()
-    let referenceMessages = Database.database().reference(withPath: "messages")
+    let referenceMessages = Database.database().reference().child("messages")
     let referenceUsers    = Database.database().reference(withPath: "user")
+    
+    // MARK: Observers
+    var messagesObservers: [DatabaseHandle] = []
+    
     
     init() {}
 
@@ -33,17 +37,19 @@ class FirebaseManager {
         if let usr = userAuth {
             return User(id: usr.uid,
                         email: usr.email ?? "",
-                        name: usr.displayName ?? "")
+                        name: usr.displayName ?? "",
+                        password: FirebaseManager.shared.getPasswordByEmail(usr.email ?? ""))
             
         } else if let usr = userGoogle {
             return User(id: usr.userID ?? "",
                         email: usr.profile?.email ?? "",
-                        name: usr.profile?.name ?? "anonymous")
+                        name: usr.profile?.name ?? "anonymous",
+                        password: FirebaseManager.shared.getPasswordByEmail(usr.profile?.email ?? ""))
         }
         
         return User(id: "",
                     email: "",
-                    name: "anonymous")
+                    name: "anonymous", password: "aA1!aaaa")
     }
     
     // MARK: Messages

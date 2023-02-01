@@ -9,45 +9,46 @@ import FirebaseDatabase
 
 struct User {
     
-    let ref: DatabaseReference?
-    let id: String
-    let email: String
-    let name: String
-//    let password: String
-    
+//    let ref: DatabaseReference?
+    var id: String
+    var email: String
+    var name: String
+    var password: String
     
     /// Initialize with raw data.
-    init(id: String, email: String, name: String) {
-        self.ref      = nil
+    init(id: String, email: String, name: String, password: String) {
+//        self.ref      = nil
         self.id       = id
         self.email    = email
         self.name     = name
-//        self.password = password
+        self.password = password
     }
     
-//
-//    /// Initialize with Firebase DataSnapshot.
-//    init?(snapshot: DataSnapshot) {
-//        guard
-//            let value    = snapshot.value as? [String: AnyObject],
-//            let name     = value["name"] as? String,
-//            let email    = value["email"] as? String,
-//            let password = value["password"] as? String
-//        else { return nil }
-//
+
+    /// Initialize with Firebase DataSnapshot.
+    init?(snapshot: DataSnapshot) {
+        guard
+            let value    = snapshot.value as? [String: AnyObject],
+            let id       = value["id"] as? String,
+            let name     = value["name"] as? String,
+            let email    = value["email"] as? String,
+            let password = value["password"] as? String
+        else { return nil }
+
 //        self.ref      = snapshot.ref
-//        self.id       = id
-//        self.email    = email
-//        self.name     = name
-//        self.password = password
-//    }
-//
-//    /// Convert User to AnyObject.
-//    func toAnyObject() -> Any {
-//        return [
-//            "name": name,
-//            "email": email,
-//            "password": password
-//        ]
-//    }
+        self.id       = id
+        self.email    = email
+        self.name     = name
+        self.password = password
+    }
+    
+    /// Convert User to AnyObject.
+    func toAnyObject() -> Any {
+        return [
+            "id": id,
+            "name": name,
+            "email": email,
+            "password": password
+        ]
+    }
 }

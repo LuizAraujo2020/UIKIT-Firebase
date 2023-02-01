@@ -44,8 +44,27 @@ class SignUpViewController: UIViewController {
                 print("🐞 Error: \(error.localizedDescription)")
                 
             } else {
-                self.eraseAllFields()
-                self.transitionToHome()
+                let name = self.textfieldName.text!
+                let email = self.textfieldEmail.text!
+                let password = self.textfieldPassword.text!
+                
+                /// User was created successfully, now store the first name and last name
+                let db = Firestore.firestore()
+                
+                db.collection("user").addDocument(data:
+                                                    ["name": name,
+                                                     "email": email,
+                                                     "password": password]
+                ) { (error) in
+                    if let error {
+                        // TODO: Show error message
+                        print("🐞 Error: \(error.localizedDescription)")
+                    }
+                    
+                    /// Transition to the Home screen
+                    self.transitionToHome()
+                    self.eraseAllFields()
+                }
             }
         }
     }
@@ -53,7 +72,6 @@ class SignUpViewController: UIViewController {
     @IBAction func signInTouched(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: true)
     }
-    
     
     @IBAction func textfieldEmailEditing(_ sender: UITextField) {
         
@@ -69,7 +87,6 @@ class SignUpViewController: UIViewController {
         
         validateField(sender, type: .confirmation, message: confirmMatched, button: buttonSignUp)
     }
-    
     
     
     // MARK: - Validations
@@ -134,6 +151,13 @@ class SignUpViewController: UIViewController {
     // MARK: Misc
     private func transitionToHome() {
         self.performSegue(withIdentifier: Constants.Segues.signUpToMessages, sender: self)
+    }
+    
+    private func eraseAllFields() {
+        textfieldName.text            = ""
+        textfieldEmail.text           = ""
+        textfieldPassword.text        = ""
+        textfieldConfirmPassword.text = ""
     }
 }
 
