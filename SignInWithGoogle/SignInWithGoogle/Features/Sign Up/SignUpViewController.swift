@@ -10,7 +10,6 @@ import Firebase
 
 class SignUpViewController: UIViewController {
     // MARK: - Constants
-    let signUpToHome = "signUpToHome"
     
     // MARK: - Outlets
     @IBOutlet weak var textfieldName: UITextField!
@@ -43,8 +42,10 @@ class SignUpViewController: UIViewController {
             
             if let error {
                 print("🐞 Error: \(error.localizedDescription)")
+                
             } else {
-                self.performSegue(withIdentifier: self.signUpToHome, sender: self)
+                self.eraseAllFields()
+                self.transitionToHome()
             }
         }
     }
@@ -52,6 +53,23 @@ class SignUpViewController: UIViewController {
     @IBAction func signInTouched(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: true)
     }
+    
+    
+    @IBAction func textfieldEmailEditing(_ sender: UITextField) {
+        
+        validateField(sender, type: .email, message: emailMatched, button: buttonSignUp)
+    }
+    
+    @IBAction func textfieldPasswordEditing(_ sender: UITextField) {
+        
+        validateField(sender, type: .password, message: passwordMatched, button: buttonSignUp)
+    }
+    
+    @IBAction func textfieldConfirmPasswordEditing(_ sender: UITextField) {
+        
+        validateField(sender, type: .confirmation, message: confirmMatched, button: buttonSignUp)
+    }
+    
     
     
     // MARK: - Validations
@@ -113,19 +131,9 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    @IBAction func textfieldEmailEditing(_ sender: UITextField) {
-        
-        validateField(sender, type: .email, message: emailMatched, button: buttonSignUp)
-    }
-    
-    @IBAction func textfieldPasswordEditing(_ sender: UITextField) {
-        
-        validateField(sender, type: .password, message: passwordMatched, button: buttonSignUp)
-    }
-    
-    @IBAction func textfieldConfirmPasswordEditing(_ sender: UITextField) {
-        
-        validateField(sender, type: .confirmation, message: confirmMatched, button: buttonSignUp)
+    // MARK: Misc
+    private func transitionToHome() {
+        self.performSegue(withIdentifier: Constants.Segues.signUpToMessages, sender: self)
     }
 }
 
