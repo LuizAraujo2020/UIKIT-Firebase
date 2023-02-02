@@ -55,6 +55,34 @@ extension FirebaseManager {
         print("🎁🎁🎁🎁🎁🎁🎁🎁")
     }
     
+    
+    
+//    func signUpFirebaseAuthWithEmailOnly(_ email: String) {
+//        
+//        print("🎁🎁🎁🎁🎁🎁🎁🎁")
+//        
+//        /// If the Auth doesn't happened, means that the user doesn't exists.
+//        var password = UUID().uuidString
+//        Auth.auth().createUser(withEmail: email,
+//                               password: password) { firebaseResult, error in
+//            
+//            if let error {
+//                print("🐞 Error: \(error.localizedDescription)")
+//                
+//            } else {
+//                let temp = User(email: email,
+//                                name: Constants.nameAnonymous,
+//                                password: password)
+//                
+//                FirebaseManager.shared.addUser(user: temp)
+//                
+//                /// Auth with the received info.
+//                Auth.auth().signIn(withEmail: temp.email, password: temp.password)
+//            }
+//        }
+//        print("🎁🎁🎁🎁🎁🎁🎁🎁")
+//    }
+    
     func getPasswordByEmail(_ documentId: String) -> String? {
         let docRef = Firestore.firestore().collection("user").document(documentId)
         

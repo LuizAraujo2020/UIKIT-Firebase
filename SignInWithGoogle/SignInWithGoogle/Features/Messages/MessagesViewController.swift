@@ -38,6 +38,7 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
         
         table.allowsMultipleSelectionDuringEditing = false
         
+        setUser()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -65,8 +66,6 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
                 self.table.reloadData()
             }
         messagesObservers.append(completed)
-        
-        setUser()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -91,13 +90,16 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
     // MARK: Methods
     
     func setUser() {
-        print("🚨🚨🚨🚨🚨🚨🚨")
         if let currentUserEmail = Auth.auth().currentUser?.email {
-            print("CURRENT USER: \(currentUserEmail)")
-            FirebaseManager.shared.fetchUser(email: currentUserEmail) { [weak self] user in
-                
-                self!.user = user
-            }
+            
+//            DispatchQueue.main.async {
+                FirebaseManager.shared.fetchUser(email: currentUserEmail) { [weak self] user in
+                    
+                    guard (self != nil) else { return }
+                    
+                    self!.user = user
+                }
+//            }
         }
     }
     
@@ -105,14 +107,9 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
         
         guard let text = textfieldMessage.text else { return }
         
-        setUser()
-        
         let message = Message(email: user?.email ?? Constants.emailAnonymous,
                               text: text,
                               name: user?.name ?? Constants.nameAnonymous)
-        
-        print(message)
-        print("🚨🚨🚨🚨🚨🚨🚨")
         
         FirebaseManager.shared.saveMessage(message)
         
