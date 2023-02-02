@@ -36,6 +36,7 @@ class SignInViewController: UIViewController {
         
         checkSignedIn()
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
@@ -46,14 +47,16 @@ class SignInViewController: UIViewController {
         if Auth.auth().currentUser != nil {
             /// If is already signed in, sends the app's main content View.
             self.performSegue(withIdentifier: Constants.Segues.signInToMessages, sender: self)
-            
+            print("🟥 SIGNED IN WITH FIREBASE")
         } else {
             
             GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
                 
                 if error == nil && user != nil {
                     /// If is already signed in with `Google`, signs in with Firebase Auth and sends the app's main content View.
+                    print("🟥 SIGNED IN WITH Google: \(user?.profile?.email ?? "aaaaaa")")
                     FirebaseManager.shared.signInFirebaseAuthWithEmail(user?.profile?.email ?? "")
+                    print("🟥 SIGNED IN WITH Google -> FIREBASE AUTH: \(Auth.auth().currentUser?.email ?? "aasasaaa")")
                     self.performSegue(withIdentifier: Constants.Segues.signInToMessages, sender: self)
                 }
             }

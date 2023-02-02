@@ -91,7 +91,9 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
     // MARK: Methods
     
     func setUser() {
+        print("🚨🚨🚨🚨🚨🚨🚨")
         if let currentUserEmail = Auth.auth().currentUser?.email {
+            print("CURRENT USER: \(currentUserEmail)")
             FirebaseManager.shared.fetchUser(email: currentUserEmail) { [weak self] user in
                 
                 self!.user = user
@@ -103,9 +105,14 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
         
         guard let text = textfieldMessage.text else { return }
         
-        let message = Message(email: user?.email ?? "anonymous@email.com",
+        setUser()
+        
+        let message = Message(email: user?.email ?? Constants.emailAnonymous,
                               text: text,
-                              name: user?.name ?? "Anonymous")
+                              name: user?.name ?? Constants.nameAnonymous)
+        
+        print(message)
+        print("🚨🚨🚨🚨🚨🚨🚨")
         
         FirebaseManager.shared.saveMessage(message)
         

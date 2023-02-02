@@ -10,6 +10,7 @@ import Foundation
 struct Constants {
     
     static let emailAnonymous = "anonymous@email.com"
+    static let nameAnonymous  = "Anonymous"
     
     struct Storyboards {
         static let homeViewController = "HomeVC"

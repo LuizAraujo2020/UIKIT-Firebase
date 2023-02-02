@@ -15,6 +15,8 @@ extension FirebaseManager {
         /// Checks if it is already signed in Firebase Auth
         guard Auth.auth().currentUser == nil else { return }
         
+        print("🎁🎁🎁🎁🎁🎁🎁🎁")
+        
         //TODO: ☑️ Throwable
         var password = ""
         /// Gets the user by the email
@@ -26,6 +28,31 @@ extension FirebaseManager {
         /// Auth with the received info.
         Auth.auth().signIn(withEmail: email, password: password)
         
+        /// Checks again if it is already signed in Firebase Auth
+        guard Auth.auth().currentUser == nil else { return }
+        
+        /// If the Auth doesn't happened, means that the user doesn't exists.
+        password = UUID().uuidString
+        Auth.auth().createUser(withEmail: email,
+                               password: password) { firebaseResult, error in
+            
+            if let error {
+                print("🐞 Error: \(error.localizedDescription)")
+                
+            } else {
+                let temp = User(email: email,
+                                name: Constants.nameAnonymous,
+                                password: password)
+                
+                FirebaseManager.shared.addUser(user: temp)
+                
+                
+                /// Auth with the received info.
+                Auth.auth().signIn(withEmail: temp.email, password: temp.password)
+                
+            }
+        }
+        print("🎁🎁🎁🎁🎁🎁🎁🎁")
     }
     
     func getPasswordByEmail(_ documentId: String) -> String? {
