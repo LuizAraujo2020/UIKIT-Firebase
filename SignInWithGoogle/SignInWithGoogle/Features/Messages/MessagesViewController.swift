@@ -66,7 +66,7 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
             }
         messagesObservers.append(completed)
         
-        self.user = FirebaseManager.shared.getUser()
+        self.user = FirebaseManager.shared.fetchUser(email: Auth.auth().currentUser?.email ?? "")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -89,22 +89,19 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Methods
     private func setUser() {
-        //        self.user = User(email: Auth.auth().currentUser?.email,
-        //                         name: Auth.auth().currentUser?.displayName,
-        //                         password: <#T##String#>)
         
-        
+        self.user = FirebaseManager.shared.fetchUser(email: Auth.auth().currentUser?.email ?? "")
     }
-    
     
     @IBAction func sendMessage(_ sender: UIButton) {
         
         guard let text = textfieldMessage.text else { return }
         
+        setUser()
         
-        let message = Message(email: FirebaseManager.shared.getUser().email,
+        let message = Message(email: user?.email ?? "anonymous@email.com",
                               text: text,
-                              name: FirebaseManager.shared.getUser().name)
+                              name: user?.name ?? "Anonymous")
         
         FirebaseManager.shared.saveMessage(message)
         
@@ -115,7 +112,7 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
         scrollToBottom()
     }
     
-    /// Scroll Table to botton
+    /// Scrolls Table to botton
     func scrollToBottom() {
         DispatchQueue.main.async {
             let indexPath = IndexPath(row: self.messages.count-1, section: 0)

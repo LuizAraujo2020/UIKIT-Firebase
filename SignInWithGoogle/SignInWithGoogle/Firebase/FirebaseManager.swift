@@ -30,27 +30,6 @@ class FirebaseManager {
     
     
     init() {}
-
-    // MARK: -Typ User Helpers
-    func getUser() -> User {
-        
-        if let usr = userAuth {
-            return User(id: usr.uid,
-                        email: usr.email ?? "",
-                        name: usr.displayName ?? "",
-                        password: FirebaseManager.shared.getPasswordByEmail(usr.email ?? ""))
-            
-        } else if let usr = userGoogle {
-            return User(id: usr.userID ?? "",
-                        email: usr.profile?.email ?? "",
-                        name: usr.profile?.name ?? "anonymous",
-                        password: FirebaseManager.shared.getPasswordByEmail(usr.profile?.email ?? ""))
-        }
-        
-        return User(id: "",
-                    email: "",
-                    name: "anonymous", password: "aA1!aaaa")
-    }
     
     // MARK: Messages
     func saveMessage(_ message: Message) {

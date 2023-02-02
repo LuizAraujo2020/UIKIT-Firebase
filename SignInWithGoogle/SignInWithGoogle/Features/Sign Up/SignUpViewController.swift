@@ -38,33 +38,22 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpTouched(_ sender: UIButton) {
         if !isFormValid() { return }
         
-        Auth.auth().createUser(withEmail: textfieldEmail.text!, password: textfieldPassword.text!) { firebaseResult, error in
+        Auth.auth().createUser(withEmail: textfieldEmail.text!,
+                               password: textfieldPassword.text!) { firebaseResult, error in
             
             if let error {
                 print("🐞 Error: \(error.localizedDescription)")
                 
             } else {
-                let name = self.textfieldName.text!
-                let email = self.textfieldEmail.text!
-                let password = self.textfieldPassword.text!
+                let temp = User(email: self.textfieldEmail.text!,
+                                name: self.textfieldName.text!,
+                                password: self.textfieldPassword.text!)
                 
-                /// User was created successfully, now store the first name and last name
-                let db = Firestore.firestore()
+                FirebaseManager.shared.addUser(user: temp)
                 
-                db.collection("user").addDocument(data:
-                                                    ["name": name,
-                                                     "email": email,
-                                                     "password": password]
-                ) { (error) in
-                    if let error {
-                        // TODO: Show error message
-                        print("🐞 Error: \(error.localizedDescription)")
-                    }
-                    
-                    /// Transition to the Home screen
-                    self.transitionToHome()
-                    self.eraseAllFields()
-                }
+                /// Transition to the Home screen and erase fields
+                self.transitionToHome()
+                self.eraseAllFields()
             }
         }
     }
