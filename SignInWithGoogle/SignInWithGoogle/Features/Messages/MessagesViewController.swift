@@ -16,7 +16,7 @@ enum References: String {
 
 class MessagesViewController: UIViewController, UITextFieldDelegate {
     
-    var user: User?
+    private(set) var user: User?
     let ref = Database.database().reference().child("messages")
     var messages: [Message] = []
     var messagesObservers: [DatabaseHandle] = []
@@ -38,12 +38,12 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
         
         table.allowsMultipleSelectionDuringEditing = false
         
-        setUser()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
       return .lightContent
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -66,7 +66,7 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
             }
         messagesObservers.append(completed)
         
-        self.user = FirebaseManager.shared.fetchUser(email: Auth.auth().currentUser?.email ?? "")
+        setUser()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -87,17 +87,21 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
         navigationItem.hidesBackButton = true
     }
     
+    
     // MARK: Methods
-    private func setUser() {
-        
-        self.user = FirebaseManager.shared.fetchUser(email: Auth.auth().currentUser?.email ?? "")
+    
+    func setUser() {
+        if let currentUserEmail = Auth.auth().currentUser?.email {
+            FirebaseManager.shared.fetchUser(email: currentUserEmail) { [weak self] user in
+                
+                self!.user = user
+            }
+        }
     }
     
     @IBAction func sendMessage(_ sender: UIButton) {
         
         guard let text = textfieldMessage.text else { return }
-        
-        setUser()
         
         let message = Message(email: user?.email ?? "anonymous@email.com",
                               text: text,
