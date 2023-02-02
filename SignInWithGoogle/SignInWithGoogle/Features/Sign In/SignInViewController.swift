@@ -42,16 +42,21 @@ class SignInViewController: UIViewController {
     
     
     private func checkSignedIn() {
-        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-            if error == nil && user != nil {
-                /// If is already signed in, sends the app's main content View.
-                self.performSegue(withIdentifier: Constants.Segues.signInToMessages, sender: self)
-            }
-        }
         
         if Auth.auth().currentUser != nil {
             /// If is already signed in, sends the app's main content View.
             self.performSegue(withIdentifier: Constants.Segues.signInToMessages, sender: self)
+            
+        } else {
+            
+            GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+                
+                if error == nil && user != nil {
+                    /// If is already signed in with `Google`, signs in with Firebase Auth and sends the app's main content View.
+                    FirebaseManager.shared.signInFirebaseAuthWithEmail(user?.profile?.email ?? "")
+                    self.performSegue(withIdentifier: Constants.Segues.signInToMessages, sender: self)
+                }
+            }
         }
     }
     
@@ -81,7 +86,17 @@ class SignInViewController: UIViewController {
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
             
             guard error == nil else { return }
-                        
+            
+            /// Gets the email from the Google and retrieves the password from FireStore.
+            let email = signInResult?.user.profile?.email ?? Constants.emailAnonymous
+            var password = ""
+            
+            FirebaseManager.shared.fetchUser(email: email) { user in
+                password = user.password
+            }
+            /// Gets the password and signs in the Firebase Auth.
+            Auth.auth().signIn(withEmail: email, password: password)
+            
             /// If sign in succeeded, display the app's main content View.
             self.performSegue(withIdentifier: Constants.Segues.signInToMessages, sender: self)
         }

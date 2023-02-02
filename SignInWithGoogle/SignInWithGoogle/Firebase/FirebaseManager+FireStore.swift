@@ -101,29 +101,6 @@ extension FirebaseManager {
             }
         }
     }
-    
-    func getPasswordByEmail(_ documentId: String) -> String? {
-        let docRef = Firestore.firestore().collection("user").document(documentId)
-        
-        var password: String?
-        
-        docRef.getDocument { document, error in
-            if let error = error as NSError? {
-                print("Error getting document: \(error.localizedDescription)")
-                
-            } else {
-                if let document = document {
-                    
-                    if let data = document.data() {
-                        password = data["password"] as? String
-
-                    }
-                }
-            }
-        }
-        
-        return password
-    }
 }
 
 

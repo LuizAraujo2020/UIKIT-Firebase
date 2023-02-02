@@ -25,6 +25,7 @@ class FirebaseManager {
     let referenceMessages = Database.database().reference().child("messages")
     let referenceUsers    = Database.database().reference(withPath: "user")
     
+    
     // MARK: Observers
     var messagesObservers: [DatabaseHandle] = []
     

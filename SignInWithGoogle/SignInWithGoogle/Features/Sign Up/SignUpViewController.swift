@@ -59,6 +59,7 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signInTouched(_ sender: UIButton) {
+        
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -152,6 +153,10 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController: UITextFieldDelegate {
     
+    enum TypeOfField {
+        case name, email, password, confirmation
+    }
+    
     private func initialSetup() {
         
         /// Textfields delegates
@@ -198,13 +203,5 @@ extension SignUpViewController: UITextFieldDelegate {
         }
         
         return true
-    }
-}
-
-
-extension SignUpViewController {
-    
-    enum TypeOfField {
-        case name, email, password, confirmation
     }
 }
