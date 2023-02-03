@@ -65,6 +65,7 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
                 self.messages = newItems
                 self.table.reloadData()
             }
+        
         messagesObservers.append(completed)
     }
     
@@ -82,6 +83,9 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
         
         self.table.delegate   = self
         self.table.dataSource = self
+        
+        table.register(MessageCustomTableViewCell.nib(),
+                       forCellReuseIdentifier: MessageCustomTableViewCell.identifier)
         
         navigationItem.hidesBackButton = true
     }
@@ -153,13 +157,26 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = table.dequeueReusableCell(withIdentifier: Constants.Cells.cellID, for: indexPath)
         let msg = messages[indexPath.row]
+        
+        if msg.email == user?.email {
+            let customCell = tableView.dequeueReusableCell(withIdentifier: MessageCustomTableViewCell.identifier, for: indexPath) as! MessageCustomTableViewCell
+            customCell.configure(title: msg.text,
+                                 subtitle: msg.email)
+            
+            return customCell
+        }
+        
+        let cell = table.dequeueReusableCell(withIdentifier: Constants.Cells.cellID, for: indexPath)
 
         cell.textLabel?.text       = msg.text
         cell.detailTextLabel?.text = msg.email
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        130
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
