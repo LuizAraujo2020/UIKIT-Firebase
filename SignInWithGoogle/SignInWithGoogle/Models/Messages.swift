@@ -10,9 +10,9 @@ import FirebaseDatabase
 struct Message {
     
     let ref: DatabaseReference?
-    let email: String
-    let text: String
-    let name: String
+    var email: String
+    var text: String
+    var name: String
     
     
     /// Initialize with raw data.

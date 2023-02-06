@@ -50,9 +50,12 @@
 		6F8EFB1D297B5CF0005CEA3E /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8EFB1C297B5CF0005CEA3E /* SignInViewController.swift */; };
 		6F8EFB20297B84AC005CEA3E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F8EFB1F297B84AC005CEA3E /* GoogleService-Info.plist */; };
 		6F93AA46298B22D2009AD836 /* FirebaseManager+FireStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F93AA45298B22D2009AD836 /* FirebaseManager+FireStore.swift */; };
-		6FA151FA298D91B4004ED433 /* MessageCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA151F8298D91B4004ED433 /* MessageCustomTableViewCell.swift */; };
-		6FA151FB298D91B4004ED433 /* MessageCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA151F9298D91B4004ED433 /* MessageCustomTableViewCell.xib */; };
 		6FA1522B298D9FBB004ED433 /* UIView+RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1522A298D9FBB004ED433 /* UIView+RoundedCorner.swift */; };
+		6FA15237298EC3ED004ED433 /* MessageCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA15233298EC3ED004ED433 /* MessageCustomTableViewCell.xib */; };
+		6FA15238298EC3ED004ED433 /* MessageAuthorCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA15234298EC3ED004ED433 /* MessageAuthorCustomTableViewCell.swift */; };
+		6FA15239298EC3ED004ED433 /* MessageAuthorCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FA15235298EC3ED004ED433 /* MessageAuthorCustomTableViewCell.xib */; };
+		6FA1523A298EC3ED004ED433 /* MessageCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA15236298EC3ED004ED433 /* MessageCustomTableViewCell.swift */; };
+		6FA63DA4298ECF73009B3619 /* FirebaseManager+Realtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA63DA3298ECF73009B3619 /* FirebaseManager+Realtime.swift */; };
 		6FCFFF6D2989FDFA0039421D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFFF6B2989FDFA0039421D /* Constants.swift */; };
 		6FCFFF6E2989FDFA0039421D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFFF6C2989FDFA0039421D /* Utilities.swift */; };
 		6FDBEC56297B2C4100CB6F40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDBEC55297B2C4100CB6F40 /* AppDelegate.swift */; };
@@ -98,9 +101,12 @@
 		6F8EFB1C297B5CF0005CEA3E /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		6F8EFB1F297B84AC005CEA3E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6F93AA45298B22D2009AD836 /* FirebaseManager+FireStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseManager+FireStore.swift"; sourceTree = "<group>"; };
-		6FA151F8298D91B4004ED433 /* MessageCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCustomTableViewCell.swift; sourceTree = "<group>"; };
-		6FA151F9298D91B4004ED433 /* MessageCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCustomTableViewCell.xib; sourceTree = "<group>"; };
 		6FA1522A298D9FBB004ED433 /* UIView+RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorner.swift"; sourceTree = "<group>"; };
+		6FA15233298EC3ED004ED433 /* MessageCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCustomTableViewCell.xib; sourceTree = "<group>"; };
+		6FA15234298EC3ED004ED433 /* MessageAuthorCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageAuthorCustomTableViewCell.swift; sourceTree = "<group>"; };
+		6FA15235298EC3ED004ED433 /* MessageAuthorCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageAuthorCustomTableViewCell.xib; sourceTree = "<group>"; };
+		6FA15236298EC3ED004ED433 /* MessageCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCustomTableViewCell.swift; sourceTree = "<group>"; };
+		6FA63DA3298ECF73009B3619 /* FirebaseManager+Realtime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseManager+Realtime.swift"; sourceTree = "<group>"; };
 		6FCFFF6B2989FDFA0039421D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6FCFFF6C2989FDFA0039421D /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		6FDBEC52297B2C4100CB6F40 /* SignInWithGoogle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignInWithGoogle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,9 +218,8 @@
 		6F7CE4A8297C3D1500B63DFD /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				6FA15232298EC3ED004ED433 /* Cell */,
 				6F7CE4A9297C3D2C00B63DFD /* MessagesViewController.swift */,
-				6FA151F8298D91B4004ED433 /* MessageCustomTableViewCell.swift */,
-				6FA151F9298D91B4004ED433 /* MessageCustomTableViewCell.xib */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -250,10 +255,22 @@
 			children = (
 				6F8EFB1F297B84AC005CEA3E /* GoogleService-Info.plist */,
 				6F591121298BEA3100AA6AF5 /* FirebaseManager+Auth.swift */,
+				6FA63DA3298ECF73009B3619 /* FirebaseManager+Realtime.swift */,
 				6F93AA45298B22D2009AD836 /* FirebaseManager+FireStore.swift */,
 				6F4AA116297F29E1004508BF /* FirebaseManager.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		6FA15232298EC3ED004ED433 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6FA15233298EC3ED004ED433 /* MessageCustomTableViewCell.xib */,
+				6FA15234298EC3ED004ED433 /* MessageAuthorCustomTableViewCell.swift */,
+				6FA15235298EC3ED004ED433 /* MessageAuthorCustomTableViewCell.xib */,
+				6FA15236298EC3ED004ED433 /* MessageCustomTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		6FCFFF6A2989FDFA0039421D /* Helpers */ = {
@@ -459,8 +476,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F0A5C1D2981ABE800735175 /* README.md in Resources */,
+				6FA15239298EC3ED004ED433 /* MessageAuthorCustomTableViewCell.xib in Resources */,
 				6FDBEC62297B2C4200CB6F40 /* LaunchScreen.storyboard in Resources */,
-				6FA151FB298D91B4004ED433 /* MessageCustomTableViewCell.xib in Resources */,
+				6FA15237298EC3ED004ED433 /* MessageCustomTableViewCell.xib in Resources */,
 				6F8EFB20297B84AC005CEA3E /* GoogleService-Info.plist in Resources */,
 				6FDBEC5F297B2C4200CB6F40 /* Assets.xcassets in Resources */,
 				6FDBEC5D297B2C4100CB6F40 /* Main.storyboard in Resources */,
@@ -492,10 +510,11 @@
 				6F437D58297CD09E00216B61 /* String+Extension.swift in Sources */,
 				6FA1522B298D9FBB004ED433 /* UIView+RoundedCorner.swift in Sources */,
 				6F4C47C0297D883B0014E377 /* UIView+Extension.swift in Sources */,
+				6FA1523A298EC3ED004ED433 /* MessageCustomTableViewCell.swift in Sources */,
+				6FA63DA4298ECF73009B3619 /* FirebaseManager+Realtime.swift in Sources */,
 				6FCFFF6E2989FDFA0039421D /* Utilities.swift in Sources */,
 				6F93AA46298B22D2009AD836 /* FirebaseManager+FireStore.swift in Sources */,
 				6F4AA117297F29E1004508BF /* FirebaseManager.swift in Sources */,
-				6FA151FA298D91B4004ED433 /* MessageCustomTableViewCell.swift in Sources */,
 				6F0A5C1F2982132A00735175 /* Date+Extension.swift in Sources */,
 				6FDBEC56297B2C4100CB6F40 /* AppDelegate.swift in Sources */,
 				6F8EFB1B297B5CE6005CEA3E /* SignUpViewController.swift in Sources */,
@@ -504,6 +523,7 @@
 				6FDBEC58297B2C4100CB6F40 /* SceneDelegate.swift in Sources */,
 				6F4AA115297F2840004508BF /* User.swift in Sources */,
 				6FCFFF6D2989FDFA0039421D /* Constants.swift in Sources */,
+				6FA15238298EC3ED004ED433 /* MessageAuthorCustomTableViewCell.swift in Sources */,
 				6F7CE4AA297C3D2C00B63DFD /* MessagesViewController.swift in Sources */,
 				6F0A5C212982B45100735175 /* UIBarButtonItem+Extension.swift in Sources */,
 				6F591122298BEA3100AA6AF5 /* FirebaseManager+Auth.swift in Sources */,

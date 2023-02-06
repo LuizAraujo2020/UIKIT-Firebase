@@ -22,7 +22,7 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
     var messagesObservers: [DatabaseHandle] = []
     
     //    var handle: AuthStateDidChangeListenerHandle?
-        
+    
     @IBOutlet weak var textfieldMessage: UITextField!
     @IBOutlet weak var buttonSignOut: UIBarButtonItem!
     @IBOutlet weak var table: UITableView!
@@ -37,16 +37,16 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
         textfieldMessage.addShadow()
         
         table.allowsMultipleSelectionDuringEditing = false
-        
-        setUser()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-      return .lightContent
+        return .lightContent
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setUser()
         
         initialSetup()
         
@@ -58,7 +58,7 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
                     if
                         let snapshot = child as? DataSnapshot,
                         let messageItem = Message(snapshot: snapshot) {
-
+                        
                         newItems.append(messageItem)
                     }
                 }
@@ -87,26 +87,46 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
         table.register(MessageCustomTableViewCell.nib(),
                        forCellReuseIdentifier: MessageCustomTableViewCell.identifier)
         
+        table.register(MessageAuthorCustomTableViewCell.nib(),
+                       forCellReuseIdentifier: MessageAuthorCustomTableViewCell.identifier)
+        
         navigationItem.hidesBackButton = true
     }
     
     
     // MARK: Methods
-    
     func setUser() {
         if let currentUserEmail = Auth.auth().currentUser?.email {
             
-//            DispatchQueue.main.async {
-                FirebaseManager.shared.fetchUser(email: currentUserEmail) { [weak self] user in
-                    
-                    guard (self != nil) else { return }
-                    
-                    self!.user = user
-                }
-//            }
+            FirebaseManager.shared.fetchUser(email: currentUserEmail) { [weak self] user in
+                
+                guard let self else { return }
+                
+                self.user = user
+                
+                self.table.reloadData()
+            }
         }
     }
     
+    /// Scrolls Table to botton
+    func scrollToBottom() {
+        if self.messages.count > 0 {
+            DispatchQueue.main.async {
+                let indexPath = IndexPath(row: self.messages.count-1, section: 0)
+                self.table.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            }
+        }
+    }
+    
+    private func handleMoveMessageToTrash(message: Message) {
+        FirebaseManager.shared.deleteMessage(message: message)
+        
+        self.table.reloadData()
+    }
+    
+    
+    // MARK: - Actions
     @IBAction func sendMessage(_ sender: UIButton) {
         
         guard let text = textfieldMessage.text else { return }
@@ -123,16 +143,6 @@ class MessagesViewController: UIViewController, UITextFieldDelegate {
         
         scrollToBottom()
     }
-    
-    /// Scrolls Table to botton
-    func scrollToBottom() {
-        DispatchQueue.main.async {
-            let indexPath = IndexPath(row: self.messages.count-1, section: 0)
-            self.table.scrollToRow(at: indexPath, at: .bottom, animated: true)
-        }
-    }
-    
-    // MARK: - Actions
     
     @IBAction func signoutActtion(_ sender: UIBarButtonItem) {
         
@@ -155,35 +165,76 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let msg = messages[indexPath.row]
         
         if msg.email == user?.email {
+            let customCell = tableView.dequeueReusableCell(withIdentifier: MessageAuthorCustomTableViewCell.identifier, for: indexPath) as! MessageAuthorCustomTableViewCell
+            customCell.configure(title: msg.text,
+                                 subtitle: msg.email)
+            
+            return customCell
+            
+        } else {
             let customCell = tableView.dequeueReusableCell(withIdentifier: MessageCustomTableViewCell.identifier, for: indexPath) as! MessageCustomTableViewCell
             customCell.configure(title: msg.text,
                                  subtitle: msg.email)
             
             return customCell
         }
-        
-        let cell = table.dequeueReusableCell(withIdentifier: Constants.Cells.cellID, for: indexPath)
-
-        cell.textLabel?.text       = msg.text
-        cell.detailTextLabel?.text = msg.email
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         130
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        guard user?.email == self.messages[indexPath.row].email else {
+            return UISwipeActionsConfiguration(actions: [])
+        }
+        
+        let action = UIContextualAction(style: .destructive,
+                                        title: "Delete") { [weak self] (action, view, completionHandler) in
+            self?.handleMoveMessageToTrash(message:  (self?.messages[indexPath.row])!)
+            completionHandler(true)
+        }
+        action.backgroundColor = UIColor.systemRed
+        
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        /// Prevent from editing someone else's message.
+        guard messages[indexPath.row].email == user?.email else { return }
+        
+        /// Variable to store alertTextField
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Edit message", message: "", preferredStyle: .alert)
+        alert.addTextField { alertTextField in
+            alertTextField.placeholder = "New message."
+            
+            ///Copy alertTextField in local variable to use in current block of code
+            textField = alertTextField
+        }
+        
+        let action = UIAlertAction(title: "Save", style: .default) { [self] action in
+            messages[indexPath.row].text = textField.text ?? ""
+            FirebaseManager.shared.updateMessage(messages[indexPath.row])
+            ///Prints the alertTextField's value
+            print(textField.text!)
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if textField == textfieldMessage {
-            textfieldMessage.resignFirstResponder()
-        }
+        textfieldMessage.resignFirstResponder()
         
         return true
     }

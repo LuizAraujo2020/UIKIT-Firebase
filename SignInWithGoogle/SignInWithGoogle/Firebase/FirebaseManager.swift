@@ -31,13 +31,4 @@ class FirebaseManager {
     
     
     init() {}
-    
-    // MARK: Messages
-    func saveMessage(_ message: Message) {
-        //TODO: ☑️ throwable
-        /// Uses the Timestamp as ID
-        let timestamp = Date().currentTimeMillis()
-        
-        referenceRoot.child("messages").child(String(timestamp)).setValue(message.toAnyObject())
-    }
 }

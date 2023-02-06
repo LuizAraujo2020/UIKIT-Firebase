@@ -20,9 +20,6 @@ extension FirebaseManager {
 //        collectionRef.document(user.email).setData(user.toAnyObject() as! [String : Any])
         
         do {
-////            let newDocReference = try collectionRef.addDocument(from: user)
-//            print("User stored with new document reference: \(newDocReference)")
-            
             try collectionRef.document(user.email).setData(from: user)
         }
         catch {
@@ -99,6 +96,15 @@ extension FirebaseManager {
             } catch {
                 print(error)
             }
+        }
+    }
+    
+    /// Delete User
+    func deleteUser(user: User) {
+        if !user.email.isEmpty {
+            let docRef = Firestore.firestore().collection("user").document(user.email)
+            
+            docRef.delete()
         }
     }
 }
